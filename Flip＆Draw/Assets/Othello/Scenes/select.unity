@@ -185,8 +185,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -321,8 +321,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Input the name of the white player
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -456,8 +456,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -614,6 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -785,8 +786,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter Player Name..
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1083,8 +1084,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter Player Name..
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1555,8 +1556,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2002,6 +2003,7 @@ GameObject:
   - component: {fileID: 1900310332}
   - component: {fileID: 1900310331}
   - component: {fileID: 1900310334}
+  - component: {fileID: 1900310335}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -2073,7 +2075,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1900310332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1900310335}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: VSPlayer
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1900310332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,6 +2139,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: 540e680143c222e49839b0c7d7063346, type: 3}
+--- !u!114 &1900310335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900310329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78ea66b906c7d84eb62fea7c613e43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078665307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,8 +2212,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Input the name of the black player
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2321,8 +2347,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
-  m_sharedMaterial: {fileID: -7814465302880711923, guid: 5f18b758eba2f2b409b617f6fdab9a22, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
