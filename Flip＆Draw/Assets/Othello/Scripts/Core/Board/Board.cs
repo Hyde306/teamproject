@@ -40,14 +40,17 @@ public class Board : MonoBehaviour
     private Vector3 gridOrigin => _t.position - new Vector3((_gridDimension.x * _cellDimension.x) / 2, (_gridDimension.y * _cellDimension.y) / 2);
 
 
-    // Public methods
+
+    // コインをボード上に配置する
 
     public bool PlaceCoinOnBoard(CoinFace face)
     {
         var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
 
+        // マウス座標をグリッドのインデックスに変換
         if (_grid.ConvertToXY(mousePos, out Vector2Int index) && _grid.GetCellData(mousePos).isOccupied == false)
         {
+            // 配置できるポイントかチェック
             if (face == CoinFace.black)
             {
                 if (_cachedBlackPoints.Contains(index) == false)
@@ -59,23 +62,29 @@ public class Board : MonoBehaviour
                     return false;
             }
 
+            // コインを作成し、ボードに配置
             var coin = makeCoin(face, _grid.GetCellCenter(index));
 
             _grid.GetCellData(index).isOccupied = true;
             _grid.GetCellData(index).coin = coin;
 
-            _latestPoint = index;
-            _latestFace = face;
+            _latestPoint = index; // 最後に配置されたコインの座標を記録
 
-            StartCoroutine(updateCoinCaptures());
+            _latestFace = face; // 最後に配置されたコインの色を記録
 
-            clearEligibleMarkers();
+            StartCoroutine(updateCoinCaptures()); // コインの捕獲処理を開始
+
+
+            clearEligibleMarkers(); // 有効なマーカーをクリア
+
 
             return true;
         }
         else
             return false;
     }
+
+    // ボード上の黒と白のコインの数を取得する
 
     public Vector2Int GetCoinCount()
     {
