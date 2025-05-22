@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Othello/Scenes/MainMenu.unity
+    path: Assets/Othello/Scenes/Title.unity
     guid: 773ac95c21a1bf84aacb00f99f52aa3d
   - enabled: 1
-    path: Assets/Othello/Scenes/PlayerSelect.unity
+    path: Assets/Othello/Scenes/select.unity
     guid: 02704b7320b971b469cec6696af04554
   - enabled: 1
-    path: Assets/Othello/Scenes/GameScene.unity
+    path: Assets/Othello/Scenes/VSPlayer.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Othello/Scenes/VSCPU.unity
+    guid: ded81a85ae3de0544be59436be6ae999
   m_configObjects: {}
