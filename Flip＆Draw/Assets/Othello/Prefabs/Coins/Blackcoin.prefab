@@ -256,4 +256,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0eb522f5a0f9020419040670ce945987, type: 3}
   - {fileID: 8300000, guid: 4d9f7f072082daa4b9f73346e9a8487a, type: 3}
   - {fileID: 8300000, guid: 8919ab280d9416b499c45fa9523409ef, type: 3}
-  _flippingSound: {fileID: 8300000, guid: 91145b4eabab0f54d8decd5c961f26cf, type: 3}
+  _flippingSound: {fileID: 8300000, guid: 7d024bf81c7a6f24facc5584585d3621, type: 3}
