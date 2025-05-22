@@ -83,7 +83,7 @@ public class BackgroundFadeControl : MonoBehaviour
         {
             // 黒プレイヤー名を取得し、勝者メッセージを表示
             string player = PlayerPrefs.GetString("black-player-name");
-            _blackBackground.GetComponentInChildren<TMP_Text>().text = $"{player} Wins!!Good！";
+            _blackBackground.GetComponentInChildren<TMP_Text>().text = $"{player} Wins!!Good!";
             _blackBackground.SetActive(true); // 背景を表示
             _blackButton.SetActive(true);     // 再スタートボタンを表示
         }
