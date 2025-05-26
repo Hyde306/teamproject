@@ -40,12 +40,12 @@ public class BackgroundFadeControl : MonoBehaviour
     /// <summary>
     /// ゲームを再スタートさせる（現在のシーンを再読み込み）。
     /// </summary>
-    public void RestartLevel() => SceneManager.LoadSceneAsync("MainLoop");
+    public void RestartLevel() => SceneManager.LoadSceneAsync("VSPlayer");
 
     /// <summary>
     /// メインメニューに遷移する。
     /// </summary>
-    public void GoToMainMenu() => SceneManager.LoadSceneAsync("MainMenu");
+    public void GoToMainMenu() => SceneManager.LoadSceneAsync("Title");
 
     // ----------------------
     // プライベートメソッド
