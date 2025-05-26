@@ -251,9 +251,9 @@ public class Board : MonoBehaviour
         _canPlay = true;
 
     }
-    /// 横方向（左右）のコインの捕獲対象を判定し、リストとして返す
-    /// 捕獲可能なコインの座標リストを格納した Dictionary
-    /// キー `0` は右方向、キー `1` は左方向のコインを示す
+    // 横方向（左右）のコインの捕獲対象を判定し、リストとして返す
+    // 捕獲可能なコインの座標リストを格納した Dictionary
+    // キー `0` は右方向、キー `1` は左方向のコインを示す
 
     private Dictionary<int, List<Vector2Int>> getHorizontalCoinsToBeCaptured()
     {
@@ -813,7 +813,7 @@ public class Board : MonoBehaviour
         destroyPlaceholderChildren(); // マーカーのプレースホルダーの子オブジェクトを削除
     }
 
-  
+
     // 新しい配置可能なマーカーを描画する
     // <param name="eligiblePoints">配置可能な座標リスト</param>
     // <param name="face">コインの色（黒または白）</param>
@@ -823,7 +823,7 @@ public class Board : MonoBehaviour
             makeMark(_grid.GetCellCenter(p), face); // 指定座標にマーカーを生成
     }
 
-  
+ 
     // マーカーのプレースホルダーの子オブジェクトをすべて削除する
     private void destroyPlaceholderChildren()
     {
