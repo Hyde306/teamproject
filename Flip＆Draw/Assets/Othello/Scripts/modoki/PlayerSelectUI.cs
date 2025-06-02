@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -53,4 +53,4 @@ public class PlayerSelectUI : MonoBehaviour
             SceneManager.LoadSceneAsync("MainLoop");  // ゲーム本編のシーンに遷移
         });
     }
-}
+}*/
