@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 /// <summary>
 /// このスクリプトは、Canvas コンポーネントが存在する場合に、
@@ -18,4 +18,4 @@ public class CameraGrabber : MonoBehaviour
         if (TryGetComponent(out Canvas canvas))
             canvas.worldCamera = Camera.main;
     }
-}
+}*/

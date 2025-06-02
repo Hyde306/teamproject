@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -35,4 +35,4 @@ public class MainMenuUI : MonoBehaviour
         // エグジットボタンがクリックされた時に、アプリケーションを終了
         _exitButton.onClick.AddListener(() => { Application.Quit(); });
     }
-}
+}*/
