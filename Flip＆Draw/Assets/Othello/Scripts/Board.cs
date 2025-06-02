@@ -191,7 +191,7 @@ public class Board : MonoBehaviour
 
     private Coin makeCoin(CoinFace face, Vector3 worldPosition)
     {
-        ++_coinsPlaced;// 配置されたコイン数を更新////////////////////////////////
+        ++_coinsPlaced;// 配置されたコイン数を更新
 
         // コインを生成し、適切な Transform に設定
 

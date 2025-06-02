@@ -65,6 +65,18 @@ public class GameDirector : MonoBehaviour
     }
 
     /// <summary>
+    /// ターンジャンプスキルを使用して、相手のターンをスキップする。
+    /// </summary>
+    public void UseTurnJumpSkill()
+    {
+        if (!_isGameOver)
+        {
+            _playerSelector = !_playerSelector; // 相手のターンをスキップ
+            Debug.Log("ターンジャンプスキルを使用！相手のターンをスキップしました。");
+        }
+    }
+
+    /// <summary>
     /// 入力を取得する（左クリックが押されたかどうか）。
     /// </summary>
     /// <returns>クリックされた場合は true</returns>
