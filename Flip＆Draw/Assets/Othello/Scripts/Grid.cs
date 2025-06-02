@@ -6,11 +6,11 @@ using UnityEngine;
 namespace Lacobus.Grid
 {
     /// <summary>
-    /// Use this class to create grids of custom types
+    ///カスタムグリッドを作成するためのクラスです。
     /// </summary>
     public class Grid<TType> : IEnumerable<Cell<TType>> where TType : class, new()
     {
-        // Fields
+        // フィールド
 
         private Vector2 _gridOrigin;
         private Vector2Int _gridDimension;
@@ -21,7 +21,7 @@ namespace Lacobus.Grid
         private Cell<TType>[] _cellArray1D;
 
 
-        // Constructors
+        // コンストラクター
 
         public Grid()
             : this(Vector3.zero, 1, 1, Vector2.one) { }
@@ -38,25 +38,25 @@ namespace Lacobus.Grid
         }
 
 
-        // Properties
+        // プロパテ
 
         /// <summary>
-        /// Returns the origin of the grid
+        /// グリッドの原点を返します
         /// </summary>
         public Vector2 GridOrigin { get { return _gridOrigin; } set { _gridOrigin = value; } }
 
         /// <summary>
-        /// Retuns the dimension of the grid
+        /// グリッドのサイズ（幅と高さ）を返します
         /// </summary>
         public Vector2Int GridDimension { get { return _gridDimension; } }
 
         /// <summary>
-        /// Returns the dimension of the cell
+        /// セルのサイズを返します
         /// </summary>
         public Vector2 CellDimension { get { return _cellDimension; } }
 
         /// <summary>
-        /// Returns the total number of cells
+        /// セルの総数を返します
         /// </summary>
         public int TotalCellCount { get { return _totalCellCount; } }
 

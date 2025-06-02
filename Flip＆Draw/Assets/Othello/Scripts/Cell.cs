@@ -5,17 +5,17 @@ namespace Lacobus.Grid
 {
     public class Cell<TType> where TType : class
     {
-        // Fields
+        // フィールド
 
         private bool _isValid;
         private TType _data;
         private Vector2Int _index;
 
 
-        // Properties
+        // プロパティ
 
         /// <summary>
-        /// Returns true if this cell is usable/ is valid
+        /// このセルが使用可能（有効）であれば true を返します
         /// </summary>
         public bool IsValid
         {
@@ -30,7 +30,7 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Returns the data stored in this cell
+        /// このセルに格納されているデータを返します
         /// </summary>
         public TType Data
         {
@@ -46,7 +46,7 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Returns the index of this cell
+        /// このセルのインデックスを返します
         /// </summary>
         public Vector2Int Index
         {
@@ -61,15 +61,15 @@ namespace Lacobus.Grid
         }
 
 
-        // Public methods
+        // パブリックメソッド
 
         /// <summary>
-        /// Override method to format the values inside the cell
+        /// セル内の値を文字列として整形するオーバーライドメソッドです
         /// </summary>
         public override string ToString() => (Data == null ? "-" : Data.ToString()) + ":" + IsValid;
 
         /// <summary>
-        /// Returns true if the cell data and index are the same
+        /// セルのデータとインデックスが同じであれば true を返します
         /// </summary>
         /// <param name="anotherCell">Cell you want to compare against</param>
         public bool IsSame(Cell<TType> anotherCell)
