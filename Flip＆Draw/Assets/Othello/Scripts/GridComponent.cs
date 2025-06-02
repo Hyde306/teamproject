@@ -184,15 +184,25 @@ namespace Lacobus.Grid
 
         private void setupSimpleSpriteRendering()
         {
+            // グリッド内の全セルをループ処理
             foreach (var c in _grid)
             {
+                // セルのインデックスを名前にした新しいGameObjectを作成し、SpriteRendererコンポーネントを付加
                 GameObject go = new GameObject($"{c.Index}", typeof(SpriteRenderer));
 
+                // 作成したGameObjectのSpriteRendererをセルのデータに保存
                 c.Data.sr = go.GetComponent<SpriteRenderer>();
+
+                // デフォルトのスプライトをSpriteRendererに設定
                 c.Data.sr.sprite = _defaultSimpleSprite;
 
+                // 新しいGameObjectをこのオブジェクトの子に設定
                 go.transform.parent = _t;
+
+                // セルの中心位置にGameObjectを配置
                 go.transform.position = _grid.GetCellCenter(c.Index);
+
+                // セルの大きさに合わせてGameObjectのスケールを設定
                 go.transform.localScale = _grid.CellDimension;
             }
         }
