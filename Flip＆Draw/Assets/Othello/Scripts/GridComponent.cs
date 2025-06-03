@@ -5,17 +5,26 @@ namespace Lacobus.Grid
 {
     public sealed class GridComponent : MonoBehaviour
     {
-        // Fields 
+        // フィールド 
 
         [SerializeField] private GridComponentDataContainer _gcData;
+        // グリッドの設定データを保持するコンテナ。インスペクターから設定可能。
+
         [SerializeField] private bool _useSimpleSpriteRendering = false;
+        // 単純なスプライト描画モードを使用するかどうかのフラグ。
+
         [SerializeField] private Sprite _defaultSimpleSprite = null;
+        // 単純なスプライト描画を使用する場合のデフォルトスプライト。
+
 
         private Grid<DefaultCell> _grid = null;
+        // グリッドデータを保持する変数。DefaultCell型のセルを管理。
+
         private Transform _t;
+        // このオブジェクトのTransformコンポーネントをキャッシュするための変数。
 
 
-        // Properties
+        // プロパティ
 
         private Transform t
         {
@@ -40,13 +49,13 @@ namespace Lacobus.Grid
         public Grid<DefaultCell> Grid { get { return _grid; } }
 
 
-        // Public methods
+        // 公開メソッド
 
         /// <summary>
-        /// Call this method to change sprite at a specific index
+        /// 特定のインデックスのスプライトを変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="index">Target index</param>
-        /// <param name="targetSprite">Target color</param>
+        /// <param name="index">対象のインデックス</param>
+        /// <param name="targetSprite">変更するスプライト</param>
         public void SetSpriteAt(Vector2Int index, Sprite targetSprite)
         {
             if (_grid.IsInside(index))
@@ -54,11 +63,11 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Call this method to change sprite at a specific index
+        /// 特定のインデックス位置のスプライトを変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="x">x index</param>
-        /// <param name="y">y index</param>
-        /// <param name="targetSprite">Target color</param>
+        /// <param name="x">X座標のインデックス</param>
+        /// <param name="y">Y座標のインデックス</param>
+        /// <param name="targetSprite">変更するスプライト</param>
         public void SetSpriteAt(int x, int y, Sprite targetSprite)
         {
             if (_grid.IsInside(x, y))
@@ -66,10 +75,10 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Call this method to change sprite at a specific world position
+        /// 特定のワールド座標上のスプライトを変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="worldPosition">Target world position</param>
-        /// <param name="targetSprite">Target color</param>
+        /// <param name="worldPosition">対象のワールド座標</param>
+        /// <param name="targetSprite">変更するスプライト</param>
         public void SetSpriteAt(Vector3 worldPosition, Sprite targetSprite)
         {
             if (_grid.IsInside(worldPosition))
@@ -79,10 +88,10 @@ namespace Lacobus.Grid
 
 
         /// <summary>
-        /// Call this method to change sprite color at a specific index
+        /// 特定のインデックス位置のスプライトの色を変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="index">Target index</param>
-        /// <param name="targetColor">Target color</param>
+        /// <param name="index">対象のインデックス</param>
+        /// <param name="targetColor">変更する色</param>
         public void SetSpriteColorAt(Vector2Int index, Color targetColor)
         {
             if (_grid.IsInside(index))
@@ -90,11 +99,11 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Call this method to change sprite color at a specific index
+        /// 特定のインデックス位置のスプライトの色を変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="x">x index</param>
-        /// <param name="y">y index</param>
-        /// <param name="targetColor">Target color</param>
+        /// <param name="x">X座標のインデックス</param>
+        /// <param name="y">Y座標のインデックス</param>
+        /// <param name="targetColor">変更する色</param>
         public void SetSpriteColorAt(int x, int y, Color targetColor)
         {
             if (_grid.IsInside(x, y))
@@ -102,10 +111,10 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Call this method to change sprite color at a specific world position
+        /// 特定のワールド座標上のスプライトの色を変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="worldPosition">Target world position</param>
-        /// <param name="targetColor">Target color</param>
+        /// <param name="worldPosition">対象のワールド座標</param>
+        /// <param name="targetColor">変更する色</param>
         public void SetSpriteColorAt(Vector3 worldPosition, Color targetColor)
         {
             if (_grid.IsInside(worldPosition))
@@ -115,10 +124,10 @@ namespace Lacobus.Grid
 
 
         /// <summary>
-        /// Call this method to change sprite color at a specific index
+        /// 特定のインデックス位置のスプライトの色を変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="index">Target index</param>
-        /// <param name="size">Target size</param>
+        /// <param name="index">対象のインデックス</param>
+        /// <param name="size">対象のサイズ</param>
         public void SetSpriteSizeAt(Vector2Int index, Vector2 size)
         {
             if (_grid.IsInside(index))
@@ -126,11 +135,11 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Call this method to change sprite color at a specific index
+        /// 特定のインデックス位置のスプライトの色を変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="x">x index</param>
-        /// <param name="y">y index</param>
-        /// <param name="size">Target size</param>
+        /// <param name="x">X座標のインデックス</param>
+        /// <param name="y">Y座標のインデックス</param>
+        /// <param name="size">対象のサイズ</param>
         public void SetSpriteSizeAt(int x, int y, Vector2 size)
         {
             if (_grid.IsInside(x, y))
@@ -138,10 +147,10 @@ namespace Lacobus.Grid
         }
 
         /// <summary>
-        /// Call this method to change sprite color at a specific world position
+        /// 特定のワールド座標上のスプライトの色を変更するためにこのメソッドを呼び出します
         /// </summary>
-        /// <param name="worldPosition">Target world position</param>
-        /// <param name="size">Target size</param>
+        /// <param name="worldPosition">対象のワールド座標</param>
+        /// <param name="size">対象のサイズ</param>
         public void SetSpriteSizeAt(Vector2 worldPosition, Vector2 size)
         {
             if (_grid.IsInside(worldPosition))
@@ -149,7 +158,7 @@ namespace Lacobus.Grid
         }
 
 
-        // Lifecycle methods
+        //  ライフサイクルメソッド
 
         private void Awake()
         {
@@ -165,19 +174,22 @@ namespace Lacobus.Grid
 
         private void Update()
         {
+            // 毎フレーム、グリッドの原点を更新する
             _grid.GridOrigin = _gcData.gridOffset + (Vector2)_t.position;
         }
 
         private void OnValidate()
         {
+            // インスペクター上で値が変更されたときにグリッドを再作成する
             _grid = new Grid<DefaultCell>(gridOrigin, _gcData.gridDimension, _gcData.cellDimension);
         }
 
         private void OnDrawGizmos()
         {
             if (_gcData.shouldDrawGizmos == false)
-                return;
+                return;// Gizmosを描画しない設定なら何もしない
 
+            // グリッドの原点を更新してからグリッド線を描画する
             _grid.GridOrigin = _gcData.gridOffset + (Vector2)transform.position;
             _grid.DrawGridLines(_gcData.gridLineColor, _gcData.crossLineColor);
         }
@@ -208,73 +220,73 @@ namespace Lacobus.Grid
         }
 
 
-        // Nested types
+        // // ネストされた型
 
         private enum OffsetType
         {
-            Preset,
-            Custom
+            Preset,  // 定型（プリセット）
+            Custom   // カスタム
         }
 
         private enum PresetTypes
         {
-            TopRight,
-            TopCenter,
-            TopLeft,
-            MiddleRight,
-            MiddleCenter,
-            MiddleLeft,
-            BottomRight,
-            BottomCenter,
-            BottomLeft
+            TopRight,      // 右上
+            TopCenter,     // 上中央
+            TopLeft,       // 左上
+            MiddleRight,   // 右中央
+            MiddleCenter,  // 中央
+            MiddleLeft,    // 左中央
+            BottomRight,   // 右下
+            BottomCenter,  // 下中央
+            BottomLeft     // 左下
         }
 
         [System.Serializable]
         private class GridComponentDataContainer
         {
-            // Grid things
+            // グリッド関連の設定
             [SerializeField]
-            public Vector2Int gridDimension = new Vector2Int();
+            public Vector2Int gridDimension = new Vector2Int();  // グリッドのサイズ（セル数）
             [SerializeField]
-            public Vector2 cellDimension = new Vector2();
+            public Vector2 cellDimension = new Vector2();        // セルのサイズ
             [SerializeField]
-            public Vector2 gridOffset = new Vector2();
+            public Vector2 gridOffset = new Vector2();           // グリッドのオフセット（位置調整）
 
-            // Gizmos and editor things
+            // Gizmosやエディタ関連の設定
             [SerializeField]
-            public OffsetType offsetType = OffsetType.Preset;
+            public OffsetType offsetType = OffsetType.Preset;    // オフセットのタイプ（プリセット or カスタム）
             [SerializeField]
-            public PresetTypes presetType = PresetTypes.BottomLeft;
+            public PresetTypes presetType = PresetTypes.BottomLeft;  // プリセットの種類（位置）
             [SerializeField]
-            public bool shouldDrawGizmos = false;
+            public bool shouldDrawGizmos = false;                // Gizmosを描画するかどうか
             [SerializeField]
-            public Color gridLineColor;
+            public Color gridLineColor;                           // グリッド線の色
             [SerializeField]
-            public Color crossLineColor;
+            public Color crossLineColor;                          // クロスラインの色
         }
 
         public class DefaultCell
         {
-            // Fields
+            // フィールド
 
-            public SpriteRenderer sr;
+            public SpriteRenderer sr;  // セルに紐づくSpriteRenderer
 
 
-            // Public methods 
+            // 公開メソッド 
 
             public void ChangeSprite(Sprite sprite)
             {
-                sr.sprite = sprite;
+                sr.sprite = sprite;  // スプライトを変更する
             }
 
             public void ChangeColor(Color color)
             {
-                sr.color = color;
+                sr.color = color;    // スプライトの色を変更する
             }
 
             public void ChangeSpriteSize(Vector2 size)
             {
-                sr.transform.localScale = size;
+                sr.transform.localScale = size;  // スプライトのサイズ（スケール）を変更する
             }
         }
     }
