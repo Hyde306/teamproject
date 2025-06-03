@@ -254,44 +254,44 @@ public class Board : MonoBehaviour
     // 横方向（左右）のコインの捕獲対象を判定し、リストとして返す
     // 捕獲可能なコインの座標リストを格納した Dictionary
     // キー `0` は右方向、キー `1` は左方向のコインを示す
-
-    private Dictionary<int, List<Vector2Int>> getHorizontalCoinsToBeCaptured()
-    {
-        bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ
-        List<Vector2Int> coinsArray = null; // 一時的にコインの座標を格納するリスト
+     
+    private Dictionary<int, List<Vector2Int>> getHorizontalCoinsToBeCaptured() 
+    { 
+        bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ 
+        List<Vector2Int> coinsArray = null; // 一時的にコインの座標を格納するリスト 
         Dictionary<int, List<Vector2Int>> coinsToBeFlipped = new Dictionary<int, List<Vector2Int>>(); // 捕獲対象のコインリスト
-
-        // **右方向の探索**
+         
+        // **右方向の探索** 
         shouldFlipCoin = false;
         coinsArray = new List<Vector2Int>();
-
-        // 最新の配置位置から右方向へ探索
+         
+        // 最新の配置位置から右方向へ探索 
         for (int x = _latestPoint.x + 1; x < _grid.GridDimension.x; ++x)
         {
             // 空セルに到達した場合、探索終了
             if (_grid.GetCellData(x, _latestPoint.y).isOccupied == false)
                 break;
-
+             
             // 相手のコインならフラグを立てて継続
             if (_grid.GetCellData(x, _latestPoint.y).coin.GetFace() != _latestFace)
             {
                 shouldFlipCoin = true;
                 continue;
-            }
+            } 
             else
-            {
+            { 
                 // 途中に相手のコインがなかった場合、捕獲できないので終了
                 if (shouldFlipCoin == false)
                     break;
-
+                 
                 // 挟み込んだコインをリストに追加
                 for (int i = _latestPoint.x + 1; i < x; ++i)
                     coinsArray.Add(new Vector2Int(i, _latestPoint.y));
-
+                 
                 break;
             }
         }
-
+         
         coinsToBeFlipped.Add(0, coinsArray); // 右方向の捕獲対象を追加
 
         // **左方向の探索**
@@ -304,7 +304,7 @@ public class Board : MonoBehaviour
             // 空セルに到達した場合、探索終了
             if (_grid.GetCellData(x, _latestPoint.y).isOccupied == false)
                 break;
-
+             
             // 相手のコインならフラグを立てて継続
             if (_grid.GetCellData(x, _latestPoint.y).coin.GetFace() != _latestFace)
             {
@@ -316,15 +316,15 @@ public class Board : MonoBehaviour
                 // 途中に相手のコインがなかった場合、捕獲できないので終了
                 if (shouldFlipCoin == false)
                     break;
-
+                 
                 // 挟み込んだコインをリストに追加
                 for (int i = _latestPoint.x - 1; i > x; --i)
                     coinsArray.Add(new Vector2Int(i, _latestPoint.y));
-
+                 
                 break;
             }
         }
-
+         
         coinsToBeFlipped.Add(1, coinsArray); // 左方向の捕獲対象を追加
 
         return coinsToBeFlipped; // 捕獲対象のリストを返す
@@ -338,11 +338,11 @@ public class Board : MonoBehaviour
         bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ
         List<Vector2Int> coinsArray = null; // 一時的にコインの座標を格納するリスト
         Dictionary<int, List<Vector2Int>> coinsToBeFlipped = new Dictionary<int, List<Vector2Int>>(); // 捕獲対象のコインリスト
-
+         
         // **上方向の探索**
         shouldFlipCoin = false;
         coinsArray = new List<Vector2Int>();
-
+         
         // 最新の配置位置から上方向へ探索
         for (int y = _latestPoint.y + 1; y < _grid.GridDimension.y; ++y)
         {
@@ -355,17 +355,17 @@ public class Board : MonoBehaviour
             {
                 shouldFlipCoin = true;
                 continue;
-            }
+            } 
             else
-            {
+            { 
                 // 途中に相手のコインがなかった場合、捕獲できないので終了
                 if (shouldFlipCoin == false)
                     break;
-
+                 
                 // 挟み込んだコインをリストに追加
                 for (int i = _latestPoint.y + 1; i < y; ++i)
                     coinsArray.Add(new Vector2Int(_latestPoint.x, i));
-
+                 
                 break;
             }
         }
@@ -405,11 +405,11 @@ public class Board : MonoBehaviour
 
         coinsToBeFlipped.Add(1, coinsArray); // 下方向の捕獲対象を追加
 
-        return coinsToBeFlipped; // 捕獲対象のリストを返す
+        return coinsToBeFlipped; // 捕獲対象のリストを返す 
     }
 
-    // 斜め方向（上下左右）のコインの捕獲対象を判定し、リストとして返す
-    // 捕獲可能なコインの座標リストを格納した Dictionary
+    // 斜め方向（上下左右）のコインの捕獲対象を判定し、リストとして返す 
+    // 捕獲可能なコインの座標リストを格納した Dictionary 
     // キー `0` は右上（Up Right）、`1` は左上（Up Left）
     // キー `2` は左下（Down Left）、`3` は右下（Down Right）
     private Dictionary<int, List<Vector2Int>> getDiagonalCoinsToBeCaptured()
@@ -611,8 +611,8 @@ public class Board : MonoBehaviour
                     Vector2Int targetPoint = new Vector2Int(x, y);
 
 
-                    // Horizontals
-                    // Right
+                    // 水平方向
+                    // 右
                     shouldFlip = false;
                     for (int i = targetPoint.x + 1; i < _grid.GridDimension.x; ++i)
                     {
@@ -635,7 +635,7 @@ public class Board : MonoBehaviour
                         }
                     }
 
-                    // Left
+                    // 左
                     shouldFlip = false;
                     for (int i = targetPoint.x - 1; i >= 0; --i)
                     {
@@ -658,9 +658,8 @@ public class Board : MonoBehaviour
                         }
                     }
 
-
-                    // Verticals
-                    // Up
+                    // 垂直方向
+                    // 上
                     shouldFlip = false;
                     for (int i = targetPoint.y + 1; i < _grid.GridDimension.y; ++i)
                     {
@@ -683,7 +682,7 @@ public class Board : MonoBehaviour
                         }
                     }
 
-                    // Down
+                    // 下
                     shouldFlip = false;
                     for (int i = targetPoint.y - 1; i >= 0; --i)
                     {
@@ -707,8 +706,8 @@ public class Board : MonoBehaviour
                     }
 
 
-                    // Diagonals
-                    // Up right
+                    // 斜め方向
+                    // 右上
                     shouldFlip = false;
                     for (int i = targetPoint.x + 1, j = targetPoint.y + 1; i < _grid.GridDimension.x && j < _grid.GridDimension.y; ++i, ++j)
                     {
