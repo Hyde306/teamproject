@@ -1,22 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class cardtextcheck : MonoBehaviour
+/// <summary>
+/// 特定のボタンを右クリックすると指定された画像を表示するスクリプト。
+/// このスクリプトはボタンのGameObjectにアタッチしてください。
+/// </summary>
+public class cardtextcheck : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject Image;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // 表示させたいImage（Inspectorで設定）
+    public Image targetImage;
 
-    // Update is called once per frame
-    void Update()
+    // マウスクリックイベント処理
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(1))
+        // 右クリックが押された場合
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Image.SetActive(true);
+            if (targetImage != null)
+            {
+                // Imageを表示する（必要なら切り替えも可能）
+                //targetImage.gameObject.SetActive(true);
+                targetImage.gameObject.SetActive(!targetImage.gameObject.activeSelf); // ← 切り替えたいときはこちら
+            }
         }
     }
 }
