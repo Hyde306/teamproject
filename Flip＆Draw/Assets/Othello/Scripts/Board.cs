@@ -117,54 +117,54 @@ public class Board : MonoBehaviour
     {
         switch (face)
         {
-            //case CoinFace.black:
-            //    // 黒コインの配置可能ポイントが未取得の場合
+            case CoinFace.black:
+                // 黒コインの配置可能ポイントが未取得の場合
 
-            //    if (_cachedBlackPoints == null)
-            //    {
-            //        // 他のキャッシュデータ（白コインの配置可能ポイント）をクリア
+                if (_cachedBlackPoints == null)
+                {
+                    // 他のキャッシュデータ（白コインの配置可能ポイント）をクリア
 
-            //        if (_cachedWhitePoints != null)
-            //            _cachedWhitePoints = null;
+                    if (_cachedWhitePoints != null)
+                        _cachedWhitePoints = null;
 
-            //        // 黒コインの配置可能ポイントを取得
+                    // 黒コインの配置可能ポイントを取得
 
-            //        _cachedBlackPoints = getAllEligiblePosition(CoinFace.black);
+                    _cachedBlackPoints = getAllEligiblePosition(CoinFace.black);
 
-            //        // 配置可能なポイントがない場合、false を返して終了
+                    // 配置可能なポイントがない場合、false を返して終了
 
-            //        if (_cachedBlackPoints.Count == 0)
-            //            return false;
+                    if (_cachedBlackPoints.Count == 0)
+                        return false;
 
-            //        // 新しい配置可能マーカーを描画
+                    // 新しい配置可能マーカーを描画
 
-            //        drawNewEligibleMarkers(_cachedBlackPoints, CoinFace.black);
-            //    }
-            //    break;
-            //case CoinFace.white:
-            //    // 白コインの配置可能ポイントが未取得の場合
+                    drawNewEligibleMarkers(_cachedBlackPoints, CoinFace.black);
+                }
+                break;
+            case CoinFace.white:
+                // 白コインの配置可能ポイントが未取得の場合
 
-            //    if (_cachedWhitePoints == null)
-            //    {
-            //        // 他のキャッシュデータ（黒コインの配置可能ポイント）をクリア
+                if (_cachedWhitePoints == null)
+                {
+                    // 他のキャッシュデータ（黒コインの配置可能ポイント）をクリア
 
-            //        if (_cachedBlackPoints != null)
-            //            _cachedBlackPoints = null;
+                    if (_cachedBlackPoints != null)
+                        _cachedBlackPoints = null;
 
-            //        // 白コインの配置可能ポイントを取得
+                    // 白コインの配置可能ポイントを取得
 
-            //        _cachedWhitePoints = getAllEligiblePosition(CoinFace.white);
+                    _cachedWhitePoints = getAllEligiblePosition(CoinFace.white);
 
-            //        // 配置可能なポイントがない場合、false を返して終了
+                    // 配置可能なポイントがない場合、false を返して終了
 
-            //        if (_cachedWhitePoints.Count == 0)
-            //            return false;
+                    if (_cachedWhitePoints.Count == 0)
+                        return false;
 
-            //        // 新しい配置可能マーカーを描画
+                    // 新しい配置可能マーカーを描画
 
-            //        drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
-            //    }
-            //    break;
+                    drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
+                }
+                break;
         }
         // 配置可能なポイントがある場合は true を返す
 
