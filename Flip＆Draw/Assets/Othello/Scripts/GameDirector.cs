@@ -71,8 +71,27 @@ public class GameDirector : MonoBehaviour
     {
         if (!_isGameOver)
         {
-            _playerSelector = !_playerSelector; // 相手のターンをスキップ
+            // (1) スキップ前にマーカーとキャッシュを削除
+            ClearMarkers();
+            _board.ClearCachedPoints(); // キャッシュクリアを追加
+
+            // (2) 相手のターンをスキップ
+            _playerSelector = !_playerSelector;
             Debug.Log("ターンジャンプスキルを使用！相手のターンをスキップしました。");
+
+            // (3) 再度マーカーを削除
+            ClearMarkers();
+
+            // (4) 配置可能位置を更新
+            _board.UpdateEligiblePositions(getFace());
+        }
+    }
+    private void ClearMarkers()
+    {
+        GameObject[] markers = GameObject.FindGameObjectsWithTag("EligibleMarker");
+        foreach (GameObject marker in markers)
+        {
+            Destroy(marker);
         }
     }
 

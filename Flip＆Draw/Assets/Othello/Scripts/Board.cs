@@ -19,6 +19,12 @@ public class Board : MonoBehaviour
     [Range(0.001f, 0.2f)]
     [SerializeField] private float _coinRollSpeed;
 
+    public void ClearCachedPoints()
+    {
+        _cachedBlackPoints = null;
+        _cachedWhitePoints = null;
+    }
+
     private Grid<BoardData> _grid;// グリッドシステム
 
     private Transform _t;// 現在のオブジェクトの Transform

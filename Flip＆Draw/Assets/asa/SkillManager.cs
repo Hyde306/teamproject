@@ -18,7 +18,6 @@ public class SkillManager : MonoBehaviour
         {
             isSkillUsed = true;
             gameDirector.UseTurnJumpSkill(); // ターンジャンプ処理を実行
-           skillButton.interactable = false; // ボタンを無効化
             Debug.Log("ターンジャンプスキルを使用しました！");
         }
         else
