@@ -2221,7 +2221,6 @@ GameObject:
   - component: {fileID: 676707848}
   - component: {fileID: 676707847}
   - component: {fileID: 676707851}
-  - component: {fileID: 676707852}
   m_Layer: 5
   m_Name: Fade Backgrounds
   m_TagString: Untagged
@@ -2336,20 +2335,6 @@ MonoBehaviour:
   _whiteButton: {fileID: 998712635}
   _blackButton: {fileID: 372104723}
   _greyButton: {fileID: 1466105098}
---- !u!114 &676707852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676707846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillButton: {fileID: 1743199038}
-  gameDirector: {fileID: 102874816}
 --- !u!1 &838949705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,6 +3321,7 @@ GameObject:
   - component: {fileID: 1743199040}
   - component: {fileID: 1743199039}
   - component: {fileID: 1743199038}
+  - component: {fileID: 1743199041}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -3445,6 +3431,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743199036}
   m_CullTransparentMesh: 1
+--- !u!114 &1743199041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743199036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 1743199038}
+  gameDirector: {fileID: 102874816}
 --- !u!1 &1759796452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4112,6 +4112,7 @@ GameObject:
   - component: {fileID: 2142495309}
   - component: {fileID: 2142495308}
   - component: {fileID: 2142495307}
+  - component: {fileID: 2142495310}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -4221,3 +4222,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142495305}
   m_CullTransparentMesh: 1
+--- !u!114 &2142495310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142495305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 2142495307}
+  gameDirector: {fileID: 102874816}
