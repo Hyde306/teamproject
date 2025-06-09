@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 556430237888880190}
   - component: {fileID: -5957014480655959175}
   - component: {fileID: 1866606126753050004}
+  - component: {fileID: -7399185418765212243}
   m_Layer: 0
   m_Name: Whitecoin
   m_TagString: WhitePiece
@@ -257,3 +258,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4d9f7f072082daa4b9f73346e9a8487a, type: 3}
   - {fileID: 8300000, guid: 8919ab280d9416b499c45fa9523409ef, type: 3}
   _flippingSound: {fileID: 8300000, guid: 24bd9f5231f501a44a0cf03e4fc701ee, type: 3}
+--- !u!114 &-7399185418765212243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240249744551156979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca74958218804134d8e3ae4abe9d7011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

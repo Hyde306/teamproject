@@ -1,42 +1,71 @@
 ﻿using UnityEngine;
 
 /// <summary>
+
 /// ゲーム全体の進行を管理するディレクタークラス。
+
 /// プレイヤーのターン管理や、ゲームの終了判定を行う。
+
 /// </summary>
+
 public class GameDirector : MonoBehaviour
+
 {
+
     // ----------------------
+
     // フィールド
+
     // ----------------------
 
     // ボードの参照（盤面管理）
+
     [SerializeField] private Board _board;
 
     // 現在のプレイヤーを切り替えるためのフラグ（false = 黒, true = 白）
+
     private bool _playerSelector = false;
 
     // ゲーム終了フラグ
+
     private bool _isGameOver = false;
 
     // ----------------------
+
     // パブリックメソッド
+
     // ----------------------
 
     /// <summary>
+
     /// ゲームが終了しているかどうかを取得する。
+
     /// </summary>
+
     /// <returns>ゲーム終了時は true</returns>
+
     public bool IsGameOver() => _isGameOver;
 
     // ----------------------
+
     // プライベートメソッド
+
     // ----------------------
 
     /// <summary>
+
     /// 毎フレーム呼ばれる更新処理。
+
     /// プレイヤーの入力・ターン処理・ゲーム終了判定を行う。
+
     /// </summary>
+
+    public int GetPieceCount()
+    {
+        return FindObjectsOfType<Piece>().Length; // "Piece" タグを使わずにオブジェクト数を取得
+    }
+
+
     private void Update()
     {
         // ゲームが終了していなければ処理を続行
@@ -62,21 +91,25 @@ public class GameDirector : MonoBehaviour
                 }
             }
         }
+
     }
 
     /// <summary>
     /// ターンジャンプスキルを使用して、相手のターンをスキップする。
     /// </summary>
+
     public void UseTurnJumpSkill()
     {
         if (!_isGameOver)
         {
             // (1) スキップ前にマーカーとキャッシュを削除
             ClearMarkers();
+
             _board.ClearCachedPoints(); // キャッシュクリアを追加
 
             // (2) 相手のターンをスキップ
             _playerSelector = !_playerSelector;
+
             Debug.Log("ターンジャンプスキルを使用！相手のターンをスキップしました。");
 
             // (3) 再度マーカーを削除
@@ -86,9 +119,11 @@ public class GameDirector : MonoBehaviour
             _board.UpdateEligiblePositions(getFace());
         }
     }
+
     private void ClearMarkers()
     {
         GameObject[] markers = GameObject.FindGameObjectsWithTag("EligibleMarker");
+
         foreach (GameObject marker in markers)
         {
             Destroy(marker);
@@ -99,6 +134,7 @@ public class GameDirector : MonoBehaviour
     /// 入力を取得する（左クリックが押されたかどうか）。
     /// </summary>
     /// <returns>クリックされた場合は true</returns>
+
     private bool getInput()
     {
         return Input.GetMouseButtonDown(0); // 0 は左クリック
@@ -108,8 +144,10 @@ public class GameDirector : MonoBehaviour
     /// 現在のプレイヤーのコイン面（黒 or 白）を取得。
     /// </summary>
     /// <returns>現在のプレイヤーの CoinFace</returns>
+
     private CoinFace getFace()
     {
+
         return _playerSelector ? CoinFace.white : CoinFace.black;
     }
 }
