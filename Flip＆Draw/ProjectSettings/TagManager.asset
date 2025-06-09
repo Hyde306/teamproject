@@ -6,6 +6,8 @@ TagManager:
   tags:
   - WhitePiece
   - EligibleMarker
+  - OpponentPiece
+  - PlayerPiece
   layers:
   - Default
   - TransparentFX
