@@ -40,7 +40,7 @@ public class ClickManager : MonoBehaviour
                     UnityEngine.Debug.LogWarning("Coin コンポーネントが見つかりません！");
                 }
 
-                isClickable = false; // クリック後、無効にしたい場合
+                //isClickable = false; // クリック後、無効にしたい場合
             }
         }
     }
