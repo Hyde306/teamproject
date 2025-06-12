@@ -1,70 +1,37 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-/// <summary>
-
-/// ゲーム全体の進行を管理するディレクタークラス。
-
-/// プレイヤーのターン管理や、ゲームの終了判定を行う。
-
-/// </summary>
+// ゲーム全体の進行を管理するディレクタークラス。
+// プレイヤーのターン管理や、ゲームの終了判定を行う。
 
 public class GameDirector : MonoBehaviour
-
 {
-
-    // ----------------------
-
-    // フィールド
-
-    // ----------------------
-
     // ボードの参照（盤面管理）
-
     [SerializeField] private Board _board;
 
     // 現在のプレイヤーを切り替えるためのフラグ（false = 黒, true = 白）
-
     private bool _playerSelector = false;
 
     // ゲーム終了フラグ
-
     private bool _isGameOver = false;
 
-    // ----------------------
-
-    // パブリックメソッド
-
-    // ----------------------
-
-    /// <summary>
-
-    /// ゲームが終了しているかどうかを取得する。
-
-    /// </summary>
-
-    /// <returns>ゲーム終了時は true</returns>
+    // ゲームが終了しているかどうかを取得する。
+    // <returns>ゲーム終了時は true</returns>
 
     public bool IsGameOver() => _isGameOver;
 
-    // ----------------------
+    // 毎フレーム呼ばれる更新処理。
+    // プレイヤーの入力・ターン処理・ゲーム終了判定を行う。
 
-    // プライベートメソッド
-
-    // ----------------------
-
-    /// <summary>
-
-    /// 毎フレーム呼ばれる更新処理。
-
-    /// プレイヤーの入力・ターン処理・ゲーム終了判定を行う。
-
-    /// </summary>
+    public bool IsPlayerTurn()
+    {
+        return !_playerSelector; // false = 黒 (プレイヤー), true = 白 (相手)
+    }
 
     public int GetPieceCount()
     {
         return FindObjectsOfType<Piece>().Length; // "Piece" タグを使わずにオブジェクト数を取得
     }
-
 
     private void Update()
     {
@@ -91,12 +58,9 @@ public class GameDirector : MonoBehaviour
                 }
             }
         }
-
     }
 
-    /// <summary>
-    /// ターンジャンプスキルを使用して、相手のターンをスキップする。
-    /// </summary>
+    // ターンジャンプスキルを使用して、相手のターンをスキップする。
 
     public void UseTurnJumpSkill()
     {
@@ -130,9 +94,7 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 入力を取得する（左クリックが押されたかどうか）。
-    /// </summary>
+    // 入力を取得する（左クリックが押されたかどうか）。
     /// <returns>クリックされた場合は true</returns>
 
     private bool getInput()
@@ -140,14 +102,12 @@ public class GameDirector : MonoBehaviour
         return Input.GetMouseButtonDown(0); // 0 は左クリック
     }
 
-    /// <summary>
-    /// 現在のプレイヤーのコイン面（黒 or 白）を取得。
-    /// </summary>
-    /// <returns>現在のプレイヤーの CoinFace</returns>
+    // 現在のプレイヤーのコイン面（黒 or 白）を取得。
+    // <returns>現在のプレイヤーの CoinFace</returns>
 
     private CoinFace getFace()
     {
-
         return _playerSelector ? CoinFace.white : CoinFace.black;
     }
 }
+

@@ -3698,9 +3698,9 @@ GameObject:
   - component: {fileID: 1743199040}
   - component: {fileID: 1743199039}
   - component: {fileID: 1743199038}
-  - component: {fileID: 1743199042}
   - component: {fileID: 1743199044}
   - component: {fileID: 1743199043}
+  - component: {fileID: 1743199045}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -3823,20 +3823,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743199036}
   m_CullTransparentMesh: 1
---- !u!114 &1743199042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743199036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillButton: {fileID: 1743199038}
-  gameDirector: {fileID: 102874816}
 --- !u!114 &1743199043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3865,6 +3851,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1185159285}
+--- !u!114 &1743199045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743199036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 1743199038}
+  gameDirector: {fileID: 102874816}
 --- !u!1 &1759796452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,9 +4709,9 @@ GameObject:
   - component: {fileID: 2142495309}
   - component: {fileID: 2142495308}
   - component: {fileID: 2142495307}
-  - component: {fileID: 2142495310}
   - component: {fileID: 2142495311}
   - component: {fileID: 2142495312}
+  - component: {fileID: 2142495313}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -4822,20 +4822,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142495305}
   m_CullTransparentMesh: 1
---- !u!114 &2142495310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142495305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillButton: {fileID: 2142495307}
-  gameDirector: {fileID: 102874816}
 --- !u!114 &2142495311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4864,3 +4850,17 @@ MonoBehaviour:
   myButton: {fileID: 2142495307}
   buttonImage: {fileID: 2142495308}
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &2142495313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142495305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4cfa26b6ea0a7b4d800a3474e5e7a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 2142495307}
+  gameDirector: {fileID: 102874816}
