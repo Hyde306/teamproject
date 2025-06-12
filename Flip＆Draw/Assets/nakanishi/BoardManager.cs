@@ -42,14 +42,6 @@ public class BoardManager : MonoBehaviour
                     Debug.Log("ターン終了処理を実行");
                     GameManager.Instance.EndTurn(); // ターンを終了し、交代
                 }
-                else
-                {
-                    Debug.Log("ヒットしたが、対象のタグではなかった");
-                }
-            }
-            else
-            {
-                Debug.Log("何もヒットしなかった");
             }
         }
     }
