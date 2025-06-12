@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2921251196430014929}
+  - component: {fileID: 8782601371435084774}
   - component: {fileID: 5146680416077201547}
   - component: {fileID: 1062315007454867977}
   - component: {fileID: 1671017306165578175}
@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -1468308961386029586}
   - component: {fileID: -2006569421969967792}
   - component: {fileID: -7234532566793161579}
+  - component: {fileID: 8531330286451660411}
   m_Layer: 0
   m_Name: Blackcoin
   m_TagString: OpponentPiece
@@ -25,8 +26,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2921251196430014929
-Transform:
+--- !u!224 &8782601371435084774
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -40,6 +41,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &5146680416077201547
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -317,7 +323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -2006569421969967792}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -344,3 +350,11 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!222 &8531330286451660411
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240249744551156979}
+  m_CullTransparentMesh: 1

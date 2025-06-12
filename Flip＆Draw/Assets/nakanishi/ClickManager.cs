@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class ClickManager : MonoBehaviour
 {
     public Button activateButton;
@@ -27,7 +28,18 @@ public class ClickManager : MonoBehaviour
             if (hit && hit.gameObject == clickableImage)
             {
                 UnityEngine.Debug.Log("画像がクリックされました！");
-                // ここに画像クリック時の処理を記述
+
+                // Coinコンポーネントを取得して FlipFace() を実行
+                Coin coin = clickableImage.GetComponent<Coin>();
+                if (coin != null)
+                {
+                    coin.FlipFace(); // コインの面を反転
+                }
+                else
+                {
+                    UnityEngine.Debug.LogWarning("Coin コンポーネントが見つかりません！");
+                }
+
                 isClickable = false; // クリック後、無効にしたい場合
             }
         }
