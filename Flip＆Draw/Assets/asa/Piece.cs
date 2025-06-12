@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    // コマを識別するスクリプト（空でもOK）
+    // コマを識別するスクリプト
 }
