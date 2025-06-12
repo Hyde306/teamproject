@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using UnityEngine;
 using UnityEngine.UI;
 public class ClickManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class ClickManager : MonoBehaviour
 
             if (hit && hit.gameObject == clickableImage)
             {
-                Debug.Log("画像がクリックされました！");
+                UnityEngine.Debug.Log("画像がクリックされました！");
                 // ここに画像クリック時の処理を記述
                 isClickable = false; // クリック後、無効にしたい場合
             }
