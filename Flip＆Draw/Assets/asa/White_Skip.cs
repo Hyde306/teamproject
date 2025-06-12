@@ -22,7 +22,7 @@ public class White_Skip : MonoBehaviour
     {
         int pieceCount = gameDirector.GetPieceCount(); // 盤面のコマ数を取得
         bool isPlayerTurn = gameDirector.IsPlayerTurn(); // プレイヤーのターンかどうかを確認
-        skillButton.interactable = isPlayerTurn && !isSkillUsed && (pieceCount >= 10);
+        skillButton.interactable = isPlayerTurn && !isSkillUsed && (pieceCount >= 15);
     }
 
     void UseTurnJumpSkill()

@@ -22,7 +22,7 @@ public class Black_Skip : MonoBehaviour
     {
         int pieceCount = gameDirector.GetPieceCount(); // 盤面のコマ数を取得
         bool isPlayerTurn = gameDirector.IsPlayerTurn(); // プレイヤーのターンかどうかを確認
-        skillButton.interactable = !isPlayerTurn && !isSkillUsed && (pieceCount >= 11);
+        skillButton.interactable = !isPlayerTurn && !isSkillUsed && (pieceCount >= 16);
     }
 
     void UseTurnJumpSkill()
