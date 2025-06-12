@@ -20,7 +20,7 @@ public class GameDirector : MonoBehaviour
     public bool IsGameOver() => _isGameOver;
 
     // 毎フレーム呼ばれる更新処理。
-    // プレイヤーの入力・ターン処理・ゲーム終了判定を行う。
+    // プiレイヤーの入力・ターン処理・ゲーム終了判定を行う。
 
     public bool IsPlayerTurn()
     {
@@ -97,7 +97,7 @@ public class GameDirector : MonoBehaviour
         return Input.GetMouseButtonDown(0); // 0 は左クリック
     }
 
-    // 現在のプレイヤーのコイン面（黒 or 白）を取得。
+    // 現在のプレイヤーのコイン面（黒 or 白）を取得
     // <returns>現在のプレイヤーの CoinFace</returns>
     private CoinFace getFace()
     {
