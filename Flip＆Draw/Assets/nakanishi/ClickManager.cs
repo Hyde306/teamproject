@@ -1,5 +1,5 @@
 using System.Diagnostics;
-
+using UnityEngine.UI;
 public class ClickManager : MonoBehaviour
 {
     public Button activateButton;
