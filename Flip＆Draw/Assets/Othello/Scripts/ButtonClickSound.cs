@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -42,4 +42,4 @@ public class ButtonClickSound : MonoBehaviour
             _as.Play();  // ƒNƒŠƒbƒN‚³‚ê‚½‚çŒø‰Ê‰¹‚ğÄ¶
         });
     }
-}*/
+}
