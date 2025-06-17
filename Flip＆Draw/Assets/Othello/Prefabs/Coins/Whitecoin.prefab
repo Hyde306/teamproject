@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 8841214934340179956}
   - component: {fileID: -1970804923117253282}
   - component: {fileID: 1506376692971634094}
-  - component: {fileID: -4237411367179082065}
   m_Layer: 0
   m_Name: Whitecoin
   m_TagString: PlayerPiece
@@ -359,17 +358,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   can_change: 0
---- !u!114 &-4237411367179082065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3240249744551156979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3c8eeafc78e25468468fa25184f19d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomFlipButton: {fileID: 0}
-  randomRowFlipButton: {fileID: 0}
