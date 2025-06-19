@@ -21,6 +21,9 @@ public class coinretu : MonoBehaviour
     // ランダムな横一列のコインをすべて反転させるボタン（インスペクターで設定）
     [SerializeField] private Button randomRowFlipButton;
 
+    // 白い駒だけからランダムで反転するボタン
+    [SerializeField] private Button randomWhiteFlipButton;
+
     // シーン内のすべてのcoinretuインスタンスを保持するリスト（staticで共有）
     private static List<coinretu> allCoins = new List<coinretu>();
 
@@ -44,6 +47,11 @@ public class coinretu : MonoBehaviour
         {
             randomRowFlipButton.onClick.AddListener(FlipRandomRow);
         }
+
+        if (randomWhiteFlipButton != null) // ← 追加
+        {
+            randomWhiteFlipButton.onClick.AddListener(FlipRandomWhiteCoin); // ← 追加
+        }
     }
 
     // オブジェクトが破棄されたときにリストから削除
@@ -55,7 +63,7 @@ public class coinretu : MonoBehaviour
     // このコインをクリックしたときに反転処理を実行
     private void OnMouseDown()
     {
-        _coin.FlipFace();
+        //_coin.FlipFace();
     }
 
     // ランダムに1つのコインを選んで反転させる
@@ -95,5 +103,14 @@ public class coinretu : MonoBehaviour
                 coin._coin.FlipFace();
             }
         }
+    }
+    private void FlipRandomWhiteCoin()
+    {
+        var whiteCoins = allCoins.Where(c => c._coin.IsWhiteFace()).ToList(); // IsWhiteFace は仮のメソッド
+
+        if (whiteCoins.Count == 0) return;
+
+        int randomIndex = Random.Range(0, whiteCoins.Count);
+        whiteCoins[randomIndex]._coin.FlipFace();
     }
 }

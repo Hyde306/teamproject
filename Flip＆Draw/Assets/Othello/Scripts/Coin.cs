@@ -20,6 +20,8 @@ public class Coin : MonoBehaviour
     // サウンド再生処理用のコンポーネント
     private CoinSoundHandler _soundHandler;
 
+    private bool isWhite = true; // 仮の状態
+
     // ----------------------
     // パブリックメソッド
     // ----------------------
@@ -27,6 +29,12 @@ public class Coin : MonoBehaviour
     /// <summary>
     /// コインの面を反転させる（白 ? 黒）アニメーションとサウンド付き。
     /// </summary>
+     
+    public bool IsWhiteFace()
+    {
+        return isWhite;
+    }
+
     public void FlipFace()
     {
         // 現在の面を切り替える
@@ -45,6 +53,8 @@ public class Coin : MonoBehaviour
 
         // サウンドを再生
         playSound();
+
+        isWhite = !isWhite;
     }
 
     /// <summary>
