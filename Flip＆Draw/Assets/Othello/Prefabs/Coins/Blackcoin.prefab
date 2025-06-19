@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -1468308961386029586}
   - component: {fileID: -7234532566793161579}
   - component: {fileID: 2493908891906033828}
-  - component: {fileID: 7279341740973037304}
+  - component: {fileID: 6453693336860370347}
   m_Layer: 0
   m_Name: Blackcoin
   m_TagString: OpponentPiece
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   can_change: 1
---- !u!114 &7279341740973037304
+--- !u!114 &6453693336860370347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,3 +321,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomFlipButton: {fileID: 0}
   randomRowFlipButton: {fileID: 0}
+  randomWhiteFlipButton: {fileID: 0}
