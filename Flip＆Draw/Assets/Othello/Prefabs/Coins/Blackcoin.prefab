@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 6358777233068150459}
   - component: {fileID: -1468308961386029586}
   - component: {fileID: -7234532566793161579}
-  - component: {fileID: 8531330286451660411}
   - component: {fileID: 2493908891906033828}
   m_Layer: 0
   m_Name: Blackcoin
@@ -294,14 +293,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!222 &8531330286451660411
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3240249744551156979}
-  m_CullTransparentMesh: 1
 --- !u!114 &2493908891906033828
 MonoBehaviour:
   m_ObjectHideFlags: 0
