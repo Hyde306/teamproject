@@ -6,7 +6,6 @@ public class Black_Skip : MonoBehaviour
 {
     public Button skillButton;
     public TMP_Text countdownText; // TextMeshPro用のテキスト
-
     private bool isSkillUsed = false;
     public GameDirector gameDirector; // GameDirectorを参照
     private int remainingTurns = 16; // 初期の残りターン数
@@ -28,6 +27,7 @@ public class Black_Skip : MonoBehaviour
         int currentTurn = gameDirector.GetCurrentTurn(); // 現在のターン数を取得
         remainingTurns = Mathf.Max(0, 16 - currentTurn); // 使用可能までの残りターンを計算
         int pieceCount = gameDirector.GetPieceCount(); // 盤面のコマ数を取得
+
         bool isPlayerTurn = gameDirector.IsPlayerTurn(); // プレイヤーのターンかどうかを確認
         skillButton.interactable = !isPlayerTurn && !isSkillUsed && (pieceCount >= 16);
 
