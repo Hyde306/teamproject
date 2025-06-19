@@ -14,23 +14,14 @@ public class GameDirector : MonoBehaviour
     // ゲーム終了フラグ
     private bool _isGameOver = false;
 
+    private int currentTurn = 0; // 現在のターン数を管理
+
     // ゲームが終了しているかどうかを取得する。
     // <returns>ゲーム終了時は true</returns>
 
     public bool IsGameOver() => _isGameOver;
-
-    // 毎フレーム呼ばれる更新処理。
-    // プiレイヤーの入力・ターン処理・ゲーム終了判定を行う。
-
-    public bool IsPlayerTurn()
-    {
-        return !_playerSelector; // false = 黒 (プレイヤー), true = 白 (相手)
-    }
-
-    public int GetPieceCount()
-    {
-        return FindObjectsOfType<Piece>().Length; // "Piece" タグを使わずにオブジェクト数を取得
-    }
+    public bool IsPlayerTurn() => !_playerSelector;
+    public int GetPieceCount() => FindObjectsOfType<Piece>().Length;
 
     private void Update()
     {
@@ -46,8 +37,7 @@ public class GameDirector : MonoBehaviour
                     // マウスの左クリックでコインを置いた場合
                     if (getInput() && _board.PlaceCoinOnBoard(getFace()))
                     {
-                        // プレイヤーを交代
-                        _playerSelector = !_playerSelector;
+                        NextTurn(); // ターンを進める
                     }
                 }
                 else
@@ -58,6 +48,18 @@ public class GameDirector : MonoBehaviour
             }
         }
     }
+
+    public void NextTurn()
+    {
+        currentTurn++; // ターン数をカウントアップ
+        _playerSelector = !_playerSelector; // プレイヤー交代
+    }
+
+    public int GetCurrentTurn()
+    {
+        return currentTurn; // 現在のターン数を返す
+    }
+
 
     // ターンジャンプスキルを使用して、相手のターンをスキップする。
     public void UseTurnJumpSkill()
