@@ -4,10 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WhitePiece
   - EligibleMarker
-  - OpponentPiece
-  - PlayerPiece
+  - Blackcoin
+  - Whitecoin
   layers:
   - Default
   - TransparentFX
