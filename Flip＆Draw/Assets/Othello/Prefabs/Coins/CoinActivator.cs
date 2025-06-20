@@ -15,19 +15,5 @@ public class CoinActivator : MonoBehaviour
                 handler.EnableHandler();
             }
         }
-
-        // マーカー再配置処理を追加
-        GameDirector director = FindObjectOfType<GameDirector>();
-        Board board = director.GetComponent<Board>();
-
-        if (board != null)
-        {
-            board.ClearCachedPoints();
-            board.clearEligibleMarkers();
-
-            CoinFace currentFace = director.IsPlayerTurn() ? CoinFace.black : CoinFace.white;
-            board.UpdateEligiblePositions(currentFace); // これでマーカーが再描画される
-        }
     }
-
 }
