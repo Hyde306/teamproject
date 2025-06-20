@@ -1,116 +1,98 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Coinオブジェクトをクリックしたときに反転処理を行うスクリプト。
 /// また、UIボタンを押すことでランダムなコインまたは横一列のコインを反転させる。
 /// </summary>
 
-[RequireComponent(typeof(Coin))]
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Coin))] // Coinコンポーネントが必須
 public class coinretu : MonoBehaviour
 {
     // このオブジェクトにアタッチされているCoinコンポーネント
     private Coin _coin;
 
-    // ランダムな1枚のコインを反転させるボタン（インスペクターで設定）
-    [SerializeField] private Button randomFlipButton;
-
-    // ランダムな横一列のコインをすべて反転させるボタン（インスペクターで設定）
+    // ランダムに1列（同じY座標）のコインをすべて反転させるUIボタン
     [SerializeField] private Button randomRowFlipButton;
 
-    // 白い駒だけからランダムで反転するボタン
-    [SerializeField] private Button randomWhiteFlipButton;
-
-    // シーン内のすべてのcoinretuインスタンスを保持するリスト（staticで共有）
+    // シーン上のすべてのcoinretuインスタンスを保持する静的リスト
     private static List<coinretu> allCoins = new List<coinretu>();
 
-    // 初期化処理
+    // スクリプトが有効化されたときに呼ばれる初期化処理
     private void Awake()
     {
-        // Coinコンポーネントを取得
+        // Coinコンポーネントの取得
         _coin = GetComponent<Coin>();
 
-        // このインスタンスをリストに追加
+        // このインスタンスを全コインリストに追加
         allCoins.Add(this);
 
-        // ランダム反転ボタンが設定されていれば、クリック時の処理を登録
-        if (randomFlipButton != null)
-        {
-            randomFlipButton.onClick.AddListener(FlipRandomCoin);
-        }
-
-        // 横列反転ボタンが設定されていれば、クリック時の処理を登録
+        // ランダム反転ボタンにイベントリスナーを登録
         if (randomRowFlipButton != null)
         {
             randomRowFlipButton.onClick.AddListener(FlipRandomRow);
         }
-
-        if (randomWhiteFlipButton != null) // ← 追加
-        {
-            randomWhiteFlipButton.onClick.AddListener(FlipRandomWhiteCoin); // ← 追加
-        }
     }
 
-    // オブジェクトが破棄されたときにリストから削除
+    // オブジェクトが破棄されたときに、リストから削除
     private void OnDestroy()
     {
         allCoins.Remove(this);
     }
 
-    // このコインをクリックしたときに反転処理を実行
-    private void OnMouseDown()
-    {
-        //_coin.FlipFace();
-    }
+    //// このコインをクリックしたときに反転処理を実行（現在はコメントアウト）
+    //private void OnMouseDown()
+    //{
+    //    // _coin.FlipFace(); // クリックで反転させたい場合はコメントを外す
+    //}
 
-    // ランダムに1つのコインを選んで反転させる
+    // シーン上のコインの中からランダムに1つを選んで反転させる
     private void FlipRandomCoin()
     {
         if (allCoins.Count == 0) return;
 
-        int randomIndex = Random.Range(0, allCoins.Count);
+        // ランダムなインデックスを取得
+        int randomIndex = UnityEngine.Random.Range(0, allCoins.Count);
 
+        // 対象のコインを反転
         allCoins[randomIndex]._coin.FlipFace();
     }
 
-    // ランダムに選ばれたY座標の横列にあるすべてのコインを反転させる
+    // Y座標が同じコイン（＝横一列）をランダムで選び、すべて反転させる
     private void FlipRandomRow()
     {
+
+        // コインが1つも存在しない場合は処理を終了
         if (allCoins.Count == 0) return;
 
-        // すべてのコインのY座標を取得し、重複を除いてリスト化（小数点誤差を丸めて処理）
+        // 全コインのY座標を取得し、小数点第1位で丸めて重複を排除（誤差対策）
         var yPositions = allCoins
-
-         .Select(c => Mathf.Round(c.transform.position.y * 100f) / 100f)
-
+         .Select(c => Mathf.Round(c.transform.position.y * 10f) / 10f)
          .Distinct()
-
          .ToList();
 
         // ランダムに1つのY座標を選択
-        float randomY = yPositions[Random.Range(0, yPositions.Count)];
+        float randomY = yPositions[UnityEngine.Random.Range(0, yPositions.Count)];
 
-        // 選ばれたY座標と一致するコインをすべて反転
-        foreach (var coin in allCoins)
+        // 選ばれたY座標と一致するコインを抽出（丸めた値で比較）
+        var rowCoins = allCoins
+         .Where(c => Mathf.Approximately(Mathf.Round(c.transform.position.y * 10f) / 10f, randomY))
+         .ToList();
+
+        // 対象のコインが存在しない場合は処理を終了
+        if (rowCoins.Count == 0) return;
+
+        // 反転させるコインの数をランダムに決定（2〜5個、ただし最大はrowCoins.Count）
+        int flipCount = Mathf.Min(UnityEngine.Random.Range(2, 6), rowCoins.Count);
+
+        // ランダムに選ばれたコインを反転
+        var selectedCoins = rowCoins.OrderBy(c => UnityEngine.Random.value).Take(flipCount);
+        foreach (var coin in selectedCoins)
         {
-            float coinY = Mathf.Round(coin.transform.position.y * 100f) / 100f;
-
-            if (Mathf.Approximately(coinY, randomY))
-            {
-                coin._coin.FlipFace();
-            }
+            coin._coin.FlipFace(); // コインの表裏を反転
         }
-    }
-    private void FlipRandomWhiteCoin()
-    {
-        var whiteCoins = allCoins.Where(c => c._coin.IsWhiteFace()).ToList(); // IsWhiteFace は仮のメソッド
-
-        if (whiteCoins.Count == 0) return;
-
-        int randomIndex = Random.Range(0, whiteCoins.Count);
-        whiteCoins[randomIndex]._coin.FlipFace();
     }
 }
