@@ -177,7 +177,7 @@ public class Board : MonoBehaviour
         return true;
     }
     // ゲームがまだプレイ可能かどうかを返す
-
+    
     public bool CanPlay() => _canPlay;
     // ボードが満杯かどうかを判定する
 
@@ -215,6 +215,8 @@ public class Board : MonoBehaviour
 
     private void makeMark(Vector3 worldPosition, CoinFace face)
     {
+        Debug.Log($"マーカー生成: {face} at {worldPosition}");
+
         switch (face)
         {
             case CoinFace.black:
@@ -225,6 +227,7 @@ public class Board : MonoBehaviour
                 break;
         }
     }
+
 
     // ゲームボードを初期化し、開始時のコイン配置を設定する
 
@@ -813,7 +816,7 @@ public class Board : MonoBehaviour
     }
 
     // 現在の配置可能なマーカーをすべて削除する
-    private void clearEligibleMarkers()
+    public void clearEligibleMarkers()
     {
         destroyPlaceholderChildren(); // マーカーのプレースホルダーの子オブジェクトを削除
     }

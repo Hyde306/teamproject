@@ -21,10 +21,39 @@ public class CoinClickHandler : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (can_change) // スクリプトが有効なら処理を実行
+        if (can_change)
         {
             _coin.FlipFace();
-            can_change = false; // 実行後に無効化
+            can_change = false;
+
+            // 他のコインの選択状態を解除
+            CoinClickHandler[] allHandlers = FindObjectsOfType<CoinClickHandler>();
+            foreach (CoinClickHandler handler in allHandlers)
+            {
+                if (handler != this)
+                {
+                    handler.can_change = false;
+                }
+            }
+
+            // マーカー削除と再配置
+            GameDirector director = FindObjectOfType<GameDirector>();
+            Board board = director.GetComponent<Board>();
+
+            if (board != null)
+            {
+                // キャッシュをクリア
+                board.ClearCachedPoints();
+
+                // マーカー削除
+                board.clearEligibleMarkers();
+
+                // 現在のプレイヤーの面を取得
+                CoinFace currentFace = director.IsPlayerTurn() ? CoinFace.black : CoinFace.white;
+
+                // 配置可能位置を更新（内部でマーカー再描画される）
+                board.UpdateEligiblePositions(currentFace);
+            }
         }
     }
 }
