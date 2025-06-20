@@ -6,7 +6,7 @@ public class Black_Skip : MonoBehaviour
 {
     public Button skillButton;
     public TMP_Text countdownText; // TextMeshPro用のテキスト
-    private bool isSkillUsed = false;
+    private bool isSkillUsed = false;//boolでtrue/false判断
     public GameDirector gameDirector; // GameDirectorを参照
     private int remainingTurns = 15; // 初期の残りターン数
 
