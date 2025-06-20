@@ -42,9 +42,11 @@ public class Coin : MonoBehaviour
         {
             case CoinFace.black:
                 _currentFace = CoinFace.white;
+                gameObject.tag = "Whitecoin"; // タグを白に変更
                 break;
             case CoinFace.white:
                 _currentFace = CoinFace.black;
+                gameObject.tag = "Blackcoin"; // タグを黒に変更
                 break;
         }
 
