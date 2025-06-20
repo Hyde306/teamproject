@@ -10,7 +10,6 @@ public class Black_Skip : MonoBehaviour
     public GameDirector gameDirector; // GameDirectorを参照
     private int remainingTurns = 15; // 初期の残りターン数
 
-
     void Start()
     {
         skillButton.onClick.AddListener(UseTurnJumpSkill);
@@ -25,14 +24,13 @@ public class Black_Skip : MonoBehaviour
     void UpdateButtonState()
     {
         int currentTurn = gameDirector.GetCurrentTurn(); // 現在のターン数を取得
-        remainingTurns = Mathf.Max(0, 16 - currentTurn); // 使用可能までの残りターンを計算
+        remainingTurns = Mathf.Max(0, 17 - currentTurn); // 使用可能までの残りターンを計算
         int pieceCount = gameDirector.GetPieceCount(); // 盤面のコマ数を取得
 
         bool isPlayerTurn = gameDirector.IsPlayerTurn(); // プレイヤーのターンかどうかを確認
         skillButton.interactable = !isPlayerTurn && !isSkillUsed && (pieceCount >= 20);
 
-        countdownText.text = "remaining turns \n" + remainingTurns + "";
-
+        countdownText.text = "remaining turns \n\n         <size=150%>" + remainingTurns + "</size>";
     }
 
     void UseTurnJumpSkill()

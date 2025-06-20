@@ -31,8 +31,7 @@ public class White_Skip : MonoBehaviour
         bool isPlayerTurn = gameDirector.IsPlayerTurn(); // プレイヤーのターンかどうかを確認
         skillButton.interactable = isPlayerTurn && !isSkillUsed && (pieceCount >= 20);
 
-        countdownText.text = "remaining turns \n" + remainingTurns + "";
-
+        countdownText.text = "remaining turns \n\n         <size=150%>" + remainingTurns + "</size>";
     }
 
     void UseTurnJumpSkill()
