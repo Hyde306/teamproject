@@ -21,7 +21,9 @@ public class cardtextcheck : MonoBehaviour, IPointerClickHandler
             {
                 // Imageを表示する（必要なら切り替えも可能）
                 //targetImage.gameObject.SetActive(true);
-                targetImage.gameObject.SetActive(!targetImage.gameObject.activeSelf); // ← 切り替えたいときはこちら
+                targetImage.gameObject.SetActive(!targetImage.gameObject.activeSelf); //切り替え
+
+
             }
         }
     }
