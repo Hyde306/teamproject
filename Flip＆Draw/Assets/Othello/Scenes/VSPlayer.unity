@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 113883087}
   - component: {fileID: 113883090}
   - component: {fileID: 113883092}
+  - component: {fileID: 113883093}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -588,6 +589,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentFace: 0
+--- !u!114 &113883093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113883085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3c8eeafc78e25468468fa25184f19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomRowFlipButton: {fileID: 113883087}
 --- !u!1 &157553100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,6 +2453,7 @@ GameObject:
   - component: {fileID: 736698376}
   - component: {fileID: 736698379}
   - component: {fileID: 736698381}
+  - component: {fileID: 736698382}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -2576,6 +2591,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentFace: 0
+--- !u!114 &736698382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736698374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1f83e359c4b634bbab4be3ef81a1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomRowFlipButton: {fileID: 736698376}
 --- !u!1 &787234611
 GameObject:
   m_ObjectHideFlags: 0

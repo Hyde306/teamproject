@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 
 [RequireComponent(typeof(Coin))] // Coinコンポーネントが必須
-public class coinretu : MonoBehaviour
+public class coinretu2 : MonoBehaviour
 {
     // このオブジェクトにアタッチされているCoinコンポーネント
     private Coin _coin;
@@ -19,7 +19,7 @@ public class coinretu : MonoBehaviour
     [SerializeField] private Button randomRowFlipButton;
 
     // シーン上のすべてのcoinretuインスタンスを保持する静的リスト
-    private static List<coinretu> allCoins = new List<coinretu>();
+    private static List<coinretu2> allCoins = new List<coinretu2>();
 
     // スクリプトが有効化されたときに呼ばれる初期化処理
     private void Awake()
@@ -64,10 +64,9 @@ public class coinretu : MonoBehaviour
     // Y座標が同じコイン（3~4をランダムで選び、すべて反転させる
     private void FlipRandomRow()
     {
-        // 相手の駒（Whitecoinタグ）をすべて取得
         var opponentCoins = allCoins
-     .Where(c => c.gameObject.CompareTag("Whitecoin"))
-     .ToList();
+         .Where(c => c.gameObject.CompareTag("Blackcoin"))
+         .ToList();
 
         // 対象がいなければ終了
         if (opponentCoins.Count == 0) return;

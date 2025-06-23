@@ -22,6 +22,8 @@ public class Coin : MonoBehaviour
 
     private bool isWhite = true; // 仮の状態
 
+    public int OwnerPlayerId { get; set; }
+
     // ----------------------
     // パブリックメソッド
     // ----------------------
@@ -29,7 +31,7 @@ public class Coin : MonoBehaviour
     /// <summary>
     /// コインの面を反転させる（白 ? 黒）アニメーションとサウンド付き。
     /// </summary>
-     
+
     public bool IsWhiteFace()
     {
         return isWhite;
