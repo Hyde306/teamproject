@@ -3,8 +3,11 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Coin))]
 [RequireComponent(typeof(Collider2D))]
+
 public class CoinClickHandler : MonoBehaviour
 {
+    [SerializeField] private Board _board;
+    public GameDirector gameDirector; // GameDirectorを参照
     private Coin _coin;
     public bool can_change;
 
@@ -48,10 +51,10 @@ public class CoinClickHandler : MonoBehaviour
                 }
 
                 // キャッシュクリア（必要なら）
-                director.GetComponent<Board>().ClearCachedPoints();
+                _board.ClearCachedPoints(); // キャッシュクリアを追加
 
                 // 配置可能位置の更新
-                director.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
+                _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
             }
         }
     }

@@ -23,7 +23,7 @@ public class GameDirector : MonoBehaviour
     public bool IsPlayerTurn() => !_playerSelector;
     public int GetPieceCount() => FindObjectsOfType<Piece>().Length;
 
-    private void Update()
+    public void Update()
     {
         // ゲームが終了していなければ処理を続行
         if (!_isGameOver)
@@ -82,7 +82,7 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-    private void ClearMarkers()
+    public void ClearMarkers()
     {
         GameObject[] markers = GameObject.FindGameObjectsWithTag("EligibleMarker");
 
@@ -94,14 +94,14 @@ public class GameDirector : MonoBehaviour
 
     // 入力を取得する（左クリックが押されたかどうか）。
     // <returns>クリックされた場合は true</returns>
-    private bool getInput()
+    public bool getInput()
     {
         return Input.GetMouseButtonDown(0); // 0 は左クリック
     }
 
     // 現在のプレイヤーのコイン面（黒 or 白）を取得
     // <returns>現在のプレイヤーの CoinFace</returns>
-    private CoinFace getFace()
+    public CoinFace getFace()
     {
         return _playerSelector ? CoinFace.white : CoinFace.black;
     }

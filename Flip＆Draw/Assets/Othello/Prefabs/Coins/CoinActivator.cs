@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CoinActivator : MonoBehaviour
 {
+    public GameDirector gameDirector; // GameDirector‚ğQÆ
+    [SerializeField] private Board _board;
     public string coinTag = "Coin"; // Unity‚Åİ’è‚µ‚½ƒ^ƒO–¼
 
     public void ActivateCoinHandler()
