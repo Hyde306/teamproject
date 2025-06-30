@@ -18,6 +18,10 @@ public class coinretu2 : MonoBehaviour
     // ランダムに1列（同じY座標）のコインをすべて反転させるUIボタン
     [SerializeField] private Button randomFlipButton2;
 
+    [SerializeField] private Board _board;
+
+    public GameDirector gameDirector; // GameDirectorを参照
+
     // シーン上のすべてのcoinretuインスタンスを保持する静的リスト
     private static List<coinretu2> allCoins = new List<coinretu2>();
 
@@ -94,6 +98,16 @@ public class coinretu2 : MonoBehaviour
         foreach (var coin in selectedCoins)
         {
             coin._coin.FlipFace();
+        }
+
+        // マーカー削除と再配置
+        GameDirector director = FindObjectOfType<GameDirector>();
+        if (director != null)
+        {
+            // キャッシュクリア
+            _board.ClearCachedPoints();
+            // 配置可能位置の更新
+            _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
         }
     }
 }
