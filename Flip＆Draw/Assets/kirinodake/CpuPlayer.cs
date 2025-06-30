@@ -54,8 +54,6 @@ public class CpuPlayer : MonoBehaviour
         // 置ける場所がなければ何もしない
         if (validMoves.Count == 0)
         {
-            Debug.Log("CPUは置ける場所がありません");
-
             return;
         }
 
@@ -66,8 +64,6 @@ public class CpuPlayer : MonoBehaviour
 
         // 駒を置く処理（ここはゲームに合わせて実装）
         PlacePiece(move.x, move.y);
-
-        Debug.Log($"CPUは{move.x}, {move.y}に駒を置きました");
     }
 
     // ここに「そのマスに置けるか」の判定を書く

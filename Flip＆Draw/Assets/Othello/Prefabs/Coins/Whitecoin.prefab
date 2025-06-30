@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7399185418765212243}
   - component: {fileID: -1970804923117253282}
   - component: {fileID: 1506376692971634094}
-  - component: {fileID: -7773144662763751285}
+  - component: {fileID: -832996962136724138}
   m_Layer: 0
   m_Name: Whitecoin
   m_TagString: Whitecoin
@@ -304,7 +304,7 @@ MonoBehaviour:
   _board: {fileID: 0}
   gameDirector: {fileID: 0}
   can_change: 0
---- !u!114 &-7773144662763751285
+--- !u!114 &-832996962136724138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -317,3 +317,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomFlipButton2: {fileID: 0}
+  _board: {fileID: 0}
+  gameDirector: {fileID: 0}

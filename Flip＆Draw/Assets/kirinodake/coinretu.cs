@@ -9,7 +9,6 @@ using UnityEngine.UI;
 /// また、UIボタンを押すことでランダムなコインまたは横一列のコインを反転させる。
 /// </summary>
 
-[RequireComponent(typeof(Coin))] // Coinコンポーネントが必須
 public class coinretu : MonoBehaviour
 {
     // このオブジェクトにアタッチされているCoinコンポーネント
@@ -37,24 +36,7 @@ public class coinretu : MonoBehaviour
         // ランダム反転ボタンにイベントリスナーを登録
         if (randomFlipButton != null)
         {
-            Debug.Log("randomFlipButton が正常に設定されています: " + randomFlipButton.name);
             randomFlipButton.onClick.AddListener(FlipRandom);
-        }
-        else
-        {
-            Debug.LogWarning("randomFlipButton が設定されていません！オブジェクト名: " + gameObject.name);
-        }
-    }
-    private void Start()
-    {
-        // Awakeで設定されていない場合、シーン内からボタンを探す
-        if (randomFlipButton == null)
-        {
-            GameObject buttonObj = GameObject.Find("RandomFlipButton"); // ← ボタンの名前に合わせて変更
-            if (buttonObj != null)
-            {
-                randomFlipButton = buttonObj.GetComponent<Button>();
-            }
         }
     }
 
