@@ -45,8 +45,6 @@ public class CoinClickHandler : MonoBehaviour
             {
                 // キャッシュクリア
                 _board.ClearCachedPoints();
-                // 配置可能位置の更新
-                _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
             }
         }
     }
