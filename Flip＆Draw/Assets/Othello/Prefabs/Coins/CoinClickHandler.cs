@@ -43,15 +43,8 @@ public class CoinClickHandler : MonoBehaviour
             GameDirector director = FindObjectOfType<GameDirector>();
             if (director != null)
             {
-                // マーカー削除
-                GameObject[] markers = GameObject.FindGameObjectsWithTag("EligibleMarker");
-                foreach (GameObject marker in markers)
-                {
-                    Destroy(marker);
-                }
-
-                // キャッシュクリア（必要なら）
-                _board.ClearCachedPoints(); // キャッシュクリアを追加
+                // キャッシュクリア
+                _board.ClearCachedPoints();
                 // 配置可能位置の更新
                 _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
             }
