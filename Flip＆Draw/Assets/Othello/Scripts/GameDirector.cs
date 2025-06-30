@@ -82,6 +82,7 @@ public class GameDirector : MonoBehaviour
         }
     }
 
+
     public void ClearMarkers()
     {
         GameObject[] markers = GameObject.FindGameObjectsWithTag("EligibleMarker");

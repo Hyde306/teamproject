@@ -825,7 +825,7 @@ public class Board : MonoBehaviour
     // 新しい配置可能なマーカーを描画する
     // <param name="eligiblePoints">配置可能な座標リスト</param>
     // <param name="face">コインの色（黒または白）</param>
-    private void drawNewEligibleMarkers(List<Vector2Int> eligiblePoints, CoinFace face)
+    public void drawNewEligibleMarkers(List<Vector2Int> eligiblePoints, CoinFace face)
     {
         foreach (var p in eligiblePoints)
             makeMark(_grid.GetCellCenter(p), face); // 指定座標にマーカーを生成
@@ -833,7 +833,7 @@ public class Board : MonoBehaviour
 
  
     // マーカーのプレースホルダーの子オブジェクトをすべて削除する
-    private void destroyPlaceholderChildren()
+    public void destroyPlaceholderChildren()
     {
         var t = _markerPlaceholder.transform;
 
@@ -845,7 +845,7 @@ public class Board : MonoBehaviour
 
     // 初期化処理
 
-    private void Awake()
+    public void Awake()
     {
         _canPlay = false; // ゲーム開始時はプレイ不可
         _t = transform; // Transform を取得

@@ -14,9 +14,9 @@ public class CoinClickHandler : MonoBehaviour
     private void Awake()
     {
         _coin = GetComponent<Coin>();
+        _board = FindObjectOfType<Board>(); 
         can_change = false; // 初期状態では無効
     }
-
     public void EnableHandler() // UIボタンから呼び出し
     {
         can_change = true;
@@ -31,6 +31,7 @@ public class CoinClickHandler : MonoBehaviour
 
             // 他のコインの選択状態を解除
             CoinClickHandler[] allHandlers = FindObjectsOfType<CoinClickHandler>();
+
             foreach (CoinClickHandler handler in allHandlers)
             {
                 if (handler != this)
@@ -38,7 +39,6 @@ public class CoinClickHandler : MonoBehaviour
                     handler.can_change = false;
                 }
             }
-
             // マーカー削除と再配置
             GameDirector director = FindObjectOfType<GameDirector>();
             if (director != null)
@@ -52,11 +52,9 @@ public class CoinClickHandler : MonoBehaviour
 
                 // キャッシュクリア（必要なら）
                 _board.ClearCachedPoints(); // キャッシュクリアを追加
-
                 // 配置可能位置の更新
                 _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
             }
         }
     }
-
 }
