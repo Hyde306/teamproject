@@ -827,8 +827,8 @@ public class Board : MonoBehaviour
     // <param name="face">コインの色（黒または白）</param>
     public void drawNewEligibleMarkers(List<Vector2Int> eligiblePoints, CoinFace face)
     {
-        foreach (var p in eligiblePoints)
-            makeMark(_grid.GetCellCenter(p), face); // 指定座標にマーカーを生成
+        //foreach (var p in eligiblePoints)
+          //  makeMark(_grid.GetCellCenter(p), face); // 指定座標にマーカーを生成
     }
 
  
