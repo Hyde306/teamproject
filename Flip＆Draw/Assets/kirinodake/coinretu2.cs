@@ -16,7 +16,7 @@ public class coinretu2 : MonoBehaviour
     private Coin _coin;
 
     // ランダムに1列（同じY座標）のコインをすべて反転させるUIボタン
-    [SerializeField] private Button randomRowFlipButton;
+    [SerializeField] private Button randomFlipButton2;
 
     // シーン上のすべてのcoinretuインスタンスを保持する静的リスト
     private static List<coinretu2> allCoins = new List<coinretu2>();
@@ -31,9 +31,26 @@ public class coinretu2 : MonoBehaviour
         allCoins.Add(this);
 
         // ランダム反転ボタンにイベントリスナーを登録
-        if (randomRowFlipButton != null)
+        if (randomFlipButton2 != null)
         {
-            randomRowFlipButton.onClick.AddListener(FlipRandomRow);
+            Debug.Log("randomFlipButton が正常に設定されています: " + randomFlipButton2.name);
+            randomFlipButton2.onClick.AddListener(FlipRandom);
+        }
+        else
+        {
+            Debug.LogWarning("randomFlipButton が設定されていません！オブジェクト名: " + gameObject.name);
+        }
+    }
+    private void Start()
+    {
+        // Awakeで設定されていない場合、シーン内からボタンを探す
+        if (randomFlipButton2 == null)
+        {
+            GameObject buttonObj = GameObject.Find("RandomFlipButton2"); // ← ボタンの名前に合わせて変更
+            if (buttonObj != null)
+            {
+                randomFlipButton2 = buttonObj.GetComponent<Button>();
+            }
         }
     }
 
@@ -42,12 +59,6 @@ public class coinretu2 : MonoBehaviour
     {
         allCoins.Remove(this);
     }
-
-    //// このコインをクリックしたときに反転処理を実行（現在はコメントアウト）
-    //private void OnMouseDown()
-    //{
-    //    // _coin.FlipFace(); // クリックで反転させたい場合はコメントを外す
-    //}
 
     // シーン上のコインの中からランダムに1つを選んで反転させる
     private void FlipRandomCoin()
@@ -62,8 +73,9 @@ public class coinretu2 : MonoBehaviour
     }
 
     // Y座標が同じコイン（3~4をランダムで選び、すべて反転させる
-    private void FlipRandomRow()
+    private void FlipRandom()
     {
+        // 相手の駒（Whitecoinタグ）をすべて取得
         var opponentCoins = allCoins
          .Where(c => c.gameObject.CompareTag("Blackcoin"))
          .ToList();
