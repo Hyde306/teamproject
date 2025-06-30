@@ -2885,7 +2885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7ee32b99b99b842a607d76af4c7ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDirector: {fileID: 0}
+  gameDirector: {fileID: 102874816}
   coinTag: Blackcoin
   board: {fileID: 0}
 --- !u!1 &787995421
@@ -5591,7 +5591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7ee32b99b99b842a607d76af4c7ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDirector: {fileID: 0}
+  gameDirector: {fileID: 102874816}
   coinTag: Whitecoin
   board: {fileID: 0}
 --- !u!1 &2142495305
