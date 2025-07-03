@@ -1,50 +1,85 @@
-//using UnityEngine;
-//using UnityEngine.UI;
-//using TMPro; // TMP‚ğg‚¤‚½‚ß‚É’Ç‰Á
+ï»¿using UnityEngine;
 
-//public class Black_Skip : MonoBehaviour
-//{
-//    public Button skillButton;
-//    public TMP_Text countdownText; // TextMeshPro—p‚ÌƒeƒLƒXƒg
-//    private bool isSkillUsed = false;//bool‚Åtrue/false”»’f
-//    public GameDirector gameDirector; // GameDirector‚ğQÆ
-//    private int remainingTurns = 15; // ‰Šú‚Ìc‚èƒ^[ƒ“”
+public class Black_Skip : MonoBehaviour
+{
+    [SerializeField] private GameDirector gameDirector;
+    [SerializeField] private Board board; // Boardã®å‚ç…§ã‚’è¿½åŠ 
 
-//    void Start()
-//    {
-//        skillButton.onClick.AddListener(UseTurnJumpSkill);
-//        UpdateButtonState(); // Å‰‚Ìó‘Ô‚ğƒ`ƒFƒbƒN
-//    }
+    private bool skillUsed = false;
+    private bool pendingOverride = false;
 
-//    void Update()
-//    {
-//        UpdateButtonState(); // –ˆƒtƒŒ[ƒ€Aƒ{ƒ^ƒ“‚Ìó‘Ô‚ğXV
-//    }
+    private bool wasPlayerTurn = false;
 
-//    void UpdateButtonState()
-//    {
-//        int currentTurn = gameDirector.GetCurrentTurn(); // Œ»İ‚Ìƒ^[ƒ“”‚ğæ“¾
-//        remainingTurns = Mathf.Max(0, 17 - currentTurn); // g—p‰Â”\‚Ü‚Å‚Ìc‚èƒ^[ƒ“‚ğŒvZ
-//        int pieceCount = gameDirector.GetPieceCount(); // ”Õ–Ê‚ÌƒRƒ}”‚ğæ“¾
+    void Update()
+    {
+        if (gameDirector.IsGameOver()) return;
 
-//        bool isPlayerTurn = gameDirector.IsPlayerTurn(); // ƒvƒŒƒCƒ„[‚Ìƒ^[ƒ“‚©‚Ç‚¤‚©‚ğŠm”F
-//        skillButton.interactable = !isPlayerTurn && !isSkillUsed && (pieceCount >= 20);
+        bool currentTurn = gameDirector.IsPlayerTurn();
 
-//        countdownText.text = "remaining turns \n\n         <size=150%>" + remainingTurns + "</size>";
-//    }
+        if (wasPlayerTurn && !currentTurn && pendingOverride)
+        {
+            Debug.Log("ã‚¹ã‚­ãƒ«ç™ºå‹•ï¼å¼·åˆ¶çš„ã«è‡ªåˆ†ã®ã‚¿ãƒ¼ãƒ³ã«æˆ»ã—ã¾ã™");
+            ForceTurnBack();
+            pendingOverride = false;
 
-//    void UseTurnJumpSkill()
-//    {
-//        if (!isSkillUsed)
-//        {
-//            isSkillUsed = true;
-//            gameDirector.UseTurnJumpSkill(); // ƒ^[ƒ“ƒWƒƒƒ“ƒvˆ—‚ğÀs
-//            Debug.Log("ƒ^[ƒ“ƒWƒƒƒ“ƒvƒXƒLƒ‹‚ğg—p‚µ‚Ü‚µ‚½I");
-//            UpdateButtonState(); // ƒXƒLƒ‹g—pŒãAƒ{ƒ^ƒ“‚Ìó‘Ô‚ğXV
-//        }
-//        else
-//        {
-//            Debug.Log("‚±‚ÌƒXƒLƒ‹‚Í‚·‚Å‚Ég—pÏ‚İ‚Å‚·I");
-//        }
-//    }
-//}
+            // â­ ãƒãƒ¼ã‚«ãƒ¼æ›´æ–°å‡¦ç†ã‚’è¿½åŠ 
+            UpdateMarkers();
+        }
+
+        wasPlayerTurn = currentTurn;
+    }
+
+    public void ActivateSkill()
+    {
+        if (!gameDirector.IsPlayerTurn())
+        {
+            Debug.Log("è‡ªåˆ†ã®ã‚¿ãƒ¼ãƒ³ä»¥å¤–ã¯ã‚¹ã‚­ãƒ«ãŒä½¿ãˆã¾ã›ã‚“");
+            return;
+        }
+
+        Debug.Log("ã‚¹ã‚­ãƒƒãƒ—ã‚¹ã‚­ãƒ«ä½¿ç”¨äºˆç´„ï¼");
+        pendingOverride = true;
+    }
+
+
+    private void ForceTurnBack()
+    {
+        var selectorField = typeof(GameDirector).GetField("_playerSelector", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        if (selectorField != null)
+        {
+            bool current = (bool)selectorField.GetValue(gameDirector);
+            selectorField.SetValue(gameDirector, !current);
+            Debug.Log("ã‚¿ãƒ¼ãƒ³ãŒå¼·åˆ¶çš„ã«æˆ»ã•ã‚Œã¾ã—ãŸï¼");
+        }
+        else
+        {
+            Debug.LogError("GameDirectorã®_playerSelectorã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã¾ã›ã‚“");
+        }
+    }
+
+    private void UpdateMarkers()
+    {
+        // æ—¢å­˜ã®ãƒãƒ¼ã‚«ãƒ¼ã‚’å‰Šé™¤
+        gameDirector.ClearMarkers();
+
+        // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¯ãƒªã‚¢ï¼ˆprivateãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãªã®ã§ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³åˆ©ç”¨ï¼‰
+        ClearCachedEligiblePositions();
+
+        // åˆæ³•æ‰‹ã‚’å†è¨ˆç®— â†’ ãƒãƒ¼ã‚«ãƒ¼æç”»ã‚‚ã•ã‚Œã‚‹ã¯ãš
+        bool success = board.UpdateEligiblePositions(gameDirector.getFace());
+
+        Debug.Log(success ? "ãƒãƒ¼ã‚«ãƒ¼ã‚’å†ç”Ÿæˆã—ã¾ã—ãŸ" : "åˆæ³•æ‰‹ãªã—");
+    }
+
+    private void ClearCachedEligiblePositions()
+    {
+        var blackPointsField = typeof(Board).GetField("_cachedBlackPoints", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var whitePointsField = typeof(Board).GetField("_cachedWhitePoints", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        if (blackPointsField != null)
+            blackPointsField.SetValue(board, null);
+        if (whitePointsField != null)
+            whitePointsField.SetValue(board, null);
+    }
+
+}
