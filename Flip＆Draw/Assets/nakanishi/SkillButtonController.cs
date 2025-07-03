@@ -7,10 +7,10 @@ public class SkillButtonController : MonoBehaviour
     [SerializeField] private Button skillButton;        // スキルボタンの UI 要素
     [SerializeField] private int usableTurn = 3;        // スキルが使用可能になるターン数
     [SerializeField] private int maxUses = 3;           // スキルの最大使用回数
-    [SerializeField] private bool isPlayerCard = true;  // このボタンがプレイヤー用かどうか（false なら相手用）
+    [SerializeField] private bool isPlayerCard = true;  // このボタンがプレイヤー用かどうか
 
     private int currentUses = 0;        // 現在の使用回数
-    private int lastUsedTurn = -1;      // 最後にスキルを使用したターン（初期値は未使用）
+    private int lastUsedTurn = -1;      // 最後にスキルを使用したターン
 
     void Start()
     {
@@ -55,9 +55,9 @@ public class SkillButtonController : MonoBehaviour
         }
     }
 
-    // ボタンがクリックされたときの処理（必要に応じて外部処理と連携）
+    // ボタンがクリックされたときの処理
     private void OnSkillButtonClicked()
     {
-        MarkSkillAsUsed(); // スキル使用を記録（実際のスキル効果は外部で処理）
+        MarkSkillAsUsed(); // スキル使用を記録
     }
 }
