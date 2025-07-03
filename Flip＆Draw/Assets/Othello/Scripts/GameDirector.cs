@@ -49,6 +49,15 @@ public class GameDirector : MonoBehaviour
         }
     }
 
+    // ターンとプレイヤー状態を最初に戻すメソッド
+    public void ResetGameState()
+    {
+        _playerSelector = false;  // 先手（黒）に戻すなどターン初期化
+        currentTurn = 0;
+        _isGameOver = false;
+        ClearMarkers(); // マーカークリアも含める場合
+    }
+
     public void NextTurn()
     {
         currentTurn++; // ターン数をカウントアップ
