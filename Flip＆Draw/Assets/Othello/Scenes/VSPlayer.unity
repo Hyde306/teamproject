@@ -2889,6 +2889,7 @@ MonoBehaviour:
   skillButton: {fileID: 787234615}
   usableTurn: 4
   isPlayerCard: 0
+  maxUses: 2
 --- !u!1 &787995421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5611,6 +5612,7 @@ MonoBehaviour:
   skillButton: {fileID: 2127640723}
   usableTurn: 4
   isPlayerCard: 1
+  maxUses: 2
 --- !u!1 &2142495305
 GameObject:
   m_ObjectHideFlags: 0
