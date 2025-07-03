@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class SkillButtonController : MonoBehaviour
 {
-    // ゲームの進行状況を管理する GameDirector への参照
-    [SerializeField] private GameDirector gameDirector;
+    [SerializeField] private GameDirector gameDirector; // ゲームの進行状況を管理する GameDirector への参照
     [SerializeField] private Button skillButton; // スキルボタンの UI 要素
     [SerializeField] private int usableTurn = 3; // スキルが使用可能になるターン数
     [SerializeField] private bool isPlayerCard = true; // true = プレイヤー用, false = 相手用
