@@ -55,7 +55,6 @@ public class GameDirector : MonoBehaviour
         _playerSelector = false;  // 先手（黒）に戻すなどターン初期化
         currentTurn = 0;
         _isGameOver = false;
-        ClearMarkers(); // マーカークリアも含める場合
     }
 
     public void NextTurn()
