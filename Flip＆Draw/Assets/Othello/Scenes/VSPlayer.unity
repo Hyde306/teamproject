@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 113883087}
   - component: {fileID: 113883090}
   - component: {fileID: 113883093}
+  - component: {fileID: 113883094}
   m_Layer: 5
   m_Name: Black_randomFlip_Button
   m_TagString: Untagged
@@ -590,6 +591,23 @@ MonoBehaviour:
   randomFlipButton: {fileID: 113883087}
   _board: {fileID: 1253741131}
   gameDirector: {fileID: 102874816}
+--- !u!114 &113883094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113883085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a7beacc0ff54e4dbbe9a67a88d8288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  skillButton: {fileID: 113883087}
+  usableTurn: 10
+  maxUses: 2
+  isPlayerCard: 1
 --- !u!1 &157553100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,6 +2459,7 @@ GameObject:
   - component: {fileID: 736698376}
   - component: {fileID: 736698379}
   - component: {fileID: 736698381}
+  - component: {fileID: 736698382}
   m_Layer: 5
   m_Name: White_randomFlip_Button
   m_TagString: Untagged
@@ -2580,6 +2599,23 @@ MonoBehaviour:
   randomFlipButton2: {fileID: 736698376}
   _board: {fileID: 1253741131}
   gameDirector: {fileID: 102874816}
+--- !u!114 &736698382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736698374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a7beacc0ff54e4dbbe9a67a88d8288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  skillButton: {fileID: 736698376}
+  usableTurn: 10
+  maxUses: 2
+  isPlayerCard: 0
 --- !u!1 &776719278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,9 +2923,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 787234615}
-  usableTurn: 4
-  isPlayerCard: 0
+  usableTurn: 10
   maxUses: 2
+  isPlayerCard: 0
 --- !u!1 &787995421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4551,7 @@ GameObject:
   - component: {fileID: 1743199044}
   - component: {fileID: 1743199043}
   - component: {fileID: 1743199045}
+  - component: {fileID: 1743199046}
   m_Layer: 5
   m_Name: Black_Skip_Button
   m_TagString: Untagged
@@ -4668,6 +4705,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 0}
+--- !u!114 &1743199046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743199036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a7beacc0ff54e4dbbe9a67a88d8288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  skillButton: {fileID: 1743199038}
+  usableTurn: 10
+  maxUses: 2
+  isPlayerCard: 1
 --- !u!1 &1759796452
 GameObject:
   m_ObjectHideFlags: 0
@@ -5610,9 +5664,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 2127640723}
-  usableTurn: 4
-  isPlayerCard: 1
+  usableTurn: 10
   maxUses: 2
+  isPlayerCard: 1
 --- !u!1 &2142495305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,6 +5682,7 @@ GameObject:
   - component: {fileID: 2142495311}
   - component: {fileID: 2142495312}
   - component: {fileID: 2142495313}
+  - component: {fileID: 2142495314}
   m_Layer: 5
   m_Name: White_Skip_Button
   m_TagString: Untagged
@@ -5781,3 +5836,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 0}
+--- !u!114 &2142495314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142495305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a7beacc0ff54e4dbbe9a67a88d8288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  skillButton: {fileID: 2142495307}
+  usableTurn: 10
+  maxUses: 2
+  isPlayerCard: 0
