@@ -4666,7 +4666,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillButton: {fileID: 1743199038}
   countdownText: {fileID: 1015398701}
+  isSkillUsed: 0
   gameDirector: {fileID: 102874816}
+  remainingTurns: 15
 --- !u!1 &1759796452
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,6 +5447,7 @@ GameObject:
   - component: {fileID: 2127640718}
   - component: {fileID: 2127640722}
   - component: {fileID: 2127640724}
+  - component: {fileID: 2127640725}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -5610,6 +5613,21 @@ MonoBehaviour:
   gameDirector: {fileID: 102874816}
   coinTag: Whitecoin
   board: {fileID: 0}
+--- !u!114 &2127640725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127640715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a7beacc0ff54e4dbbe9a67a88d8288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  skillButton: {fileID: 2127640723}
+  usableTurn: 8
 --- !u!1 &2142495305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5778,4 +5796,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillButton: {fileID: 2142495307}
   countdownText: {fileID: 787995423}
+  isSkillUsed: 0
   gameDirector: {fileID: 102874816}
+  remainingTurns: 15
