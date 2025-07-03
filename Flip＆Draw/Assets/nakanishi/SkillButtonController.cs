@@ -3,15 +3,30 @@ using UnityEngine.UI;
 
 public class SkillButtonController : MonoBehaviour
 {
-    [SerializeField] private GameDirector gameDirector; // GameDirectorへの参照
-    [SerializeField] private Button skillButton;        // スキルボタン
-    [SerializeField] private int usableTurn = 3;        // 使用可能になるターン
+    [SerializeField] private GameDirector gameDirector;
+    [SerializeField] private Button skillButton;
+    [SerializeField] private int usableTurn = 3;
+    [SerializeField] private bool isPlayerCard = true; // true = プレイヤー用, false = 相手用
+
+    private bool isSkillUsed = false;
 
     void Update()
     {
         int currentTurn = gameDirector.GetCurrentTurn();
+        bool isPlayerTurn = gameDirector.IsPlayerTurn();
 
-        // 指定ターン以降ならボタンを有効化
-        skillButton.interactable = currentTurn >= usableTurn;
+        // 自分のターンかどうかをチェック
+        bool isMyTurn = (isPlayerCard == isPlayerTurn);
+
+        // 使用可能条件
+        bool canUse = currentTurn >= usableTurn && !isSkillUsed && isMyTurn;
+
+        skillButton.interactable = canUse;
+    }
+
+    public void OnSkillUsed()
+    {
+        isSkillUsed = true;
+        skillButton.interactable = false;
     }
 }
