@@ -9,6 +9,8 @@ public class CpuPlayer : MonoBehaviour
     // 現在のコインの面（白 or 黒）
     [SerializeField] private CoinFace _currentFace;
 
+    [SerializeField] private Board _board;
+
     // アニメーション処理用のコンポーネント
     private AnimationHandlerComponent _animationHandler;
 
@@ -18,7 +20,9 @@ public class CpuPlayer : MonoBehaviour
     // 盤面のサイズ（例：8x8）
     private int boardSize = 8;
 
-    private Board Board;
+    public Board Board;
+
+
 
     // 盤面の状態を表す（0=空き、1=プレイヤー、2=CPUなど）
     private int[,] board;

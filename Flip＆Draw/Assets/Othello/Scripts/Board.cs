@@ -549,7 +549,7 @@ public class Board : MonoBehaviour
     // コインの捕獲状態を更新するコルーチン
     // 配置されたコインに応じて、挟み込まれた相手のコインを反転する
 
-    private IEnumerator updateCoinCaptures()
+    public IEnumerator updateCoinCaptures()
     {
         _canPlay = false; // コインの更新中はプレイを一時的に停止
 
