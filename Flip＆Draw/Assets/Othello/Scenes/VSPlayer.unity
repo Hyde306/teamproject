@@ -1791,6 +1791,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467803027}
   m_CullTransparentMesh: 1
+--- !u!1 &468230121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468230123}
+  - component: {fileID: 468230122}
+  m_Layer: 0
+  m_Name: Black_Skip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &468230122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468230121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  board: {fileID: 1253741131}
+--- !u!4 &468230123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468230121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481847830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,7 +2673,7 @@ GameObject:
   - component: {fileID: 776719280}
   - component: {fileID: 776719279}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4550,7 +4596,6 @@ GameObject:
   - component: {fileID: 1743199038}
   - component: {fileID: 1743199044}
   - component: {fileID: 1743199043}
-  - component: {fileID: 1743199045}
   - component: {fileID: 1743199046}
   m_Layer: 5
   m_Name: Black_Skip_Button
@@ -4624,7 +4669,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743199039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468230122}
+        m_TargetAssemblyTypeName: Black_Skip, Assembly-CSharp
+        m_MethodName: ActivateSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1743199039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4691,20 +4748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1185159285}
---- !u!114 &1743199045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743199036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameDirector: {fileID: 102874816}
-  board: {fileID: 0}
 --- !u!114 &1743199046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4719,7 +4762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 1743199038}
-  usableTurn: 10
+  usableTurn: 5
   maxUses: 2
   isPlayerCard: 1
 --- !u!1 &1759796452
@@ -5216,6 +5259,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048677803}
   m_CullTransparentMesh: 1
+--- !u!1 &2067508551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2067508553}
+  - component: {fileID: 2067508552}
+  m_Layer: 0
+  m_Name: White_Skip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2067508552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067508551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4cfa26b6ea0a7b4d800a3474e5e7a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  board: {fileID: 1253741131}
+--- !u!4 &2067508553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067508551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119129054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5755,7 +5844,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2142495308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2067508552}
+        m_TargetAssemblyTypeName: White_Skip, Assembly-CSharp
+        m_MethodName: ActivateSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2142495308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5850,6 +5951,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 2142495307}
-  usableTurn: 10
+  usableTurn: 5
   maxUses: 2
   isPlayerCard: 0
