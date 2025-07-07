@@ -215,8 +215,6 @@ public class Board : MonoBehaviour
 
     private void makeMark(Vector3 worldPosition, CoinFace face)
     {
-        Debug.Log($"マーカー生成: {face} at {worldPosition}");
-
         switch (face)
         {
             case CoinFace.black:
