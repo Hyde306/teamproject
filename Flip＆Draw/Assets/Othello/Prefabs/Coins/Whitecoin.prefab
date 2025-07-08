@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: -1970804923117253282}
   - component: {fileID: 1506376692971634094}
   - component: {fileID: -832996962136724138}
+  - component: {fileID: 5719864048384883621}
+  - component: {fileID: 7620177204281087855}
   m_Layer: 0
   m_Name: Whitecoin
   m_TagString: Whitecoin
@@ -302,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _board: {fileID: 0}
+  skillButtonController: {fileID: 0}
   gameDirector: {fileID: 0}
   can_change: 0
 --- !u!114 &-832996962136724138
@@ -317,5 +320,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomFlipButton2: {fileID: 0}
+  _board: {fileID: 0}
+  gameDirector: {fileID: 0}
+--- !u!114 &5719864048384883621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240249744551156979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fa37f37fde3b74cae761050a4ad953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomFlipButton: {fileID: 0}
+  _board: {fileID: 0}
+  gameDirector: {fileID: 0}
+--- !u!114 &7620177204281087855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240249744551156979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fa37f37fde3b74cae761050a4ad953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomFlipButton: {fileID: 0}
   _board: {fileID: 0}
   gameDirector: {fileID: 0}

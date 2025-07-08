@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -7234532566793161579}
   - component: {fileID: 2493908891906033828}
   - component: {fileID: -5425803179179634999}
+  - component: {fileID: -8591814844817802583}
   m_Layer: 0
   m_Name: Blackcoin
   m_TagString: Blackcoin
@@ -307,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _board: {fileID: 0}
+  skillButtonController: {fileID: 0}
   gameDirector: {fileID: 0}
   can_change: 1
 --- !u!114 &-5425803179179634999
@@ -322,3 +324,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomFlipButton: {fileID: 0}
+  _board: {fileID: 0}
+  gameDirector: {fileID: 0}
+--- !u!114 &-8591814844817802583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240249744551156979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de00d5e86bbd6d144a74c183cec60747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomFlipButton: {fileID: 0}
+  _board: {fileID: 0}
+  gameDirector: {fileID: 0}
