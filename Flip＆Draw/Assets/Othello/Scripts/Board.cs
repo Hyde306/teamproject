@@ -41,7 +41,7 @@ public class Board : MonoBehaviour
 
     private bool _canPlay = true; // ゲームのプレイ可否
     private int _coinsPlaced = 0; // 配置済みのコイン数
-
+    public static int white_count;//白のコインの枚数をカウント
     // Properties
     // グリッドの原点座標（中央揃え）
 
@@ -160,7 +160,7 @@ public class Board : MonoBehaviour
                     // 白コインの配置可能ポイントを取得
 
                     _cachedWhitePoints = getAllEligiblePosition(CoinFace.white);
-
+                    white_count = _cachedWhitePoints.Count;//白のコインの枚数を取得
                     // 配置可能なポイントがない場合、false を返して終了
 
                     if (_cachedWhitePoints.Count == 0)
@@ -168,7 +168,12 @@ public class Board : MonoBehaviour
 
                     // 新しい配置可能マーカーを描画
 
+                    //drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
+
                     drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
+
+                    //CPUなら白コインを配置
+
                 }
                 break;
         }
@@ -602,7 +607,7 @@ public class Board : MonoBehaviour
     // 指定されたコインの色に応じて、配置可能な座標を取得する
     // <returns>配置可能な座標のリスト</returns>
 
-    private List<Vector2Int> getAllEligiblePosition(CoinFace face)
+    public List<Vector2Int> getAllEligiblePosition(CoinFace face)
     {
         List<Vector2Int> points = new List<Vector2Int>(); // 配置可能な座標を格納するリスト
         bool shouldFlip = false; // 挟み込めるコインがあるかの判定フラグ
