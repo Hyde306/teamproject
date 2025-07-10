@@ -190,7 +190,7 @@
 //        return true;
 //    }
 //    // ゲームがまだプレイ可能かどうかを返す
-    
+
 //    public bool CanPlay() => _canPlay;
 //    // ボードが満杯かどうかを判定する
 
@@ -299,44 +299,44 @@
 //    // 横方向（左右）のコインの捕獲対象を判定し、リストとして返す
 //    // 捕獲可能なコインの座標リストを格納した Dictionary
 //    // キー `0` は右方向、キー `1` は左方向のコインを示す
-     
-//    private Dictionary<int, List<Vector2Int>> getHorizontalCoinsToBeCaptured() 
-//    { 
+
+//    private Dictionary<int, List<Vector2Int>> getHorizontalCoinsToBeCaptured()
+//    {
 //        bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ 
 //        List<Vector2Int> coinsArray = null; // 一時的にコインの座標を格納するリスト 
 //        Dictionary<int, List<Vector2Int>> coinsToBeFlipped = new Dictionary<int, List<Vector2Int>>(); // 捕獲対象のコインリスト
-         
+
 //        // **右方向の探索** 
 //        shouldFlipCoin = false;
 //        coinsArray = new List<Vector2Int>();
-         
+
 //        // 最新の配置位置から右方向へ探索 
 //        for (int x = _latestPoint.x + 1; x < _grid.GridDimension.x; ++x)
 //        {
 //            // 空セルに到達した場合、探索終了
 //            if (_grid.GetCellData(x, _latestPoint.y).isOccupied == false)
 //                break;
-             
+
 //            // 相手のコインならフラグを立てて継続
 //            if (_grid.GetCellData(x, _latestPoint.y).coin.GetFace() != _latestFace)
 //            {
 //                shouldFlipCoin = true;
 //                continue;
-//            } 
+//            }
 //            else
-//            { 
+//            {
 //                // 途中に相手のコインがなかった場合、捕獲できないので終了
 //                if (shouldFlipCoin == false)
 //                    break;
-                 
+
 //                // 挟み込んだコインをリストに追加
 //                for (int i = _latestPoint.x + 1; i < x; ++i)
 //                    coinsArray.Add(new Vector2Int(i, _latestPoint.y));
-                 
+
 //                break;
 //            }
 //        }
-         
+
 //        coinsToBeFlipped.Add(0, coinsArray); // 右方向の捕獲対象を追加
 
 //        // **左方向の探索**
@@ -349,7 +349,7 @@
 //            // 空セルに到達した場合、探索終了
 //            if (_grid.GetCellData(x, _latestPoint.y).isOccupied == false)
 //                break;
-             
+
 //            // 相手のコインならフラグを立てて継続
 //            if (_grid.GetCellData(x, _latestPoint.y).coin.GetFace() != _latestFace)
 //            {
@@ -361,15 +361,15 @@
 //                // 途中に相手のコインがなかった場合、捕獲できないので終了
 //                if (shouldFlipCoin == false)
 //                    break;
-                 
+
 //                // 挟み込んだコインをリストに追加
 //                for (int i = _latestPoint.x - 1; i > x; --i)
 //                    coinsArray.Add(new Vector2Int(i, _latestPoint.y));
-                 
+
 //                break;
 //            }
 //        }
-         
+
 //        coinsToBeFlipped.Add(1, coinsArray); // 左方向の捕獲対象を追加
 
 //        return coinsToBeFlipped; // 捕獲対象のリストを返す
@@ -383,11 +383,11 @@
 //        bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ
 //        List<Vector2Int> coinsArray = null; // 一時的にコインの座標を格納するリスト
 //        Dictionary<int, List<Vector2Int>> coinsToBeFlipped = new Dictionary<int, List<Vector2Int>>(); // 捕獲対象のコインリスト
-         
+
 //        // **上方向の探索**
 //        shouldFlipCoin = false;
 //        coinsArray = new List<Vector2Int>();
-         
+
 //        // 最新の配置位置から上方向へ探索
 //        for (int y = _latestPoint.y + 1; y < _grid.GridDimension.y; ++y)
 //        {
@@ -400,17 +400,17 @@
 //            {
 //                shouldFlipCoin = true;
 //                continue;
-//            } 
+//            }
 //            else
-//            { 
+//            {
 //                // 途中に相手のコインがなかった場合、捕獲できないので終了
 //                if (shouldFlipCoin == false)
 //                    break;
-                 
+
 //                // 挟み込んだコインをリストに追加
 //                for (int i = _latestPoint.y + 1; i < y; ++i)
 //                    coinsArray.Add(new Vector2Int(_latestPoint.x, i));
-                 
+
 //                break;
 //            }
 //        }
@@ -867,7 +867,7 @@
 //            makeMark(_grid.GetCellCenter(p), face); // 指定座標にマーカーを生成
 //    }
 
- 
+
 //    // マーカーのプレースホルダーの子オブジェクトをすべて削除する
 //    public void destroyPlaceholderChildren()
 //    {
