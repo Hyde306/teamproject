@@ -176,7 +176,7 @@ public class Board : MonoBehaviour
                     drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
 
                     //CPUなら白コインを配置
-                    setCoin(CoinFace.white, _cachedWhitePoints[CPU.rand]);
+                    //setCoin(CoinFace.white, _cachedWhitePoints[CPU.rand]);
 
                 }
                 break;
@@ -222,26 +222,26 @@ public class Board : MonoBehaviour
     }
     //コインを自動で設定
     //public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)
-    public Coin setCoin(CoinFace face, Vector2Int place_pos)
-    {
+    //public Coin setCoin(CoinFace face, Vector2Int place_pos)
+    //{
 
-        ++_coinsPlaced; // 配置されたコイン数を更新
+    //    ++_coinsPlaced; // 配置されたコイン数を更新
 
-        Vector3 spawnPos = new Vector3(place_pos.x, place_pos.y, 0);
+    //    Vector3 spawnPos = new Vector3(place_pos.x, place_pos.y, 0);
 
-        //return Instantiate(_blackCoinPrefab, spawn_pos, Quaternion.identity, _t).GetComponent<Coin>();元のコード
+    //    //return Instantiate(_blackCoinPrefab, spawn_pos, Quaternion.identity, _t).GetComponent<Coin>();元のコード
 
-        switch (face)
-        {
-            case CoinFace.black:
-                return Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
-            case CoinFace.white:
-                return Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
-            default:
-                return null;
-        }
+    //    switch (face)
+    //    {
+    //        case CoinFace.black:
+    //            return Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
+    //        case CoinFace.white:
+    //            return Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
+    //        default:
+    //            return null;
+    //    }
 
-    }
+    //}
 
 
     // マーカーを生成する
