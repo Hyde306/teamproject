@@ -16,6 +16,8 @@ public class cardtextcheck : MonoBehaviour, IPointerClickHandler
 
     public Image targetImage3;
 
+    public Image targetImage4;  
+
     // マウスクリックイベント処理
 
     public void OnPointerClick(PointerEventData eventData)
@@ -33,6 +35,10 @@ public class cardtextcheck : MonoBehaviour, IPointerClickHandler
 
                 if (targetImage3 != null)
                     targetImage3.gameObject.SetActive(false);
+
+                if (targetImage4 != null)
+                    targetImage4.gameObject.SetActive(false);
+
             }
 
         }
