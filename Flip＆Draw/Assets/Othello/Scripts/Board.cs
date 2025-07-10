@@ -42,7 +42,9 @@ public class Board : MonoBehaviour
     private bool _canPlay = true; // ゲームのプレイ可否
     private int _coinsPlaced = 0; // 配置済みのコイン数
     public static int white_count;//白のコインの枚数をカウント
-    private int sum_count = 0;//合計のコインの枚数
+   
+
+
 
     // Properties
     // グリッドの原点座標（中央揃え）
@@ -175,8 +177,6 @@ public class Board : MonoBehaviour
 
                     drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
 
-                    //CPUなら白コインを配置
-                    //setCoin(CoinFace.white, _cachedWhitePoints[CPU.rand]);
 
                 }
                 break;
@@ -220,28 +220,6 @@ public class Board : MonoBehaviour
                 return null;
         }
     }
-    //コインを自動で設定
-    //public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)
-    //public Coin setCoin(CoinFace face, Vector2Int place_pos)
-    //{
-
-    //    ++_coinsPlaced; // 配置されたコイン数を更新
-
-    //    Vector3 spawnPos = new Vector3(place_pos.x, place_pos.y, 0);
-
-    //    //return Instantiate(_blackCoinPrefab, spawn_pos, Quaternion.identity, _t).GetComponent<Coin>();元のコード
-
-    //    switch (face)
-    //    {
-    //        case CoinFace.black:
-    //            return Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
-    //        case CoinFace.white:
-    //            return Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
-    //        default:
-    //            return null;
-    //    }
-
-    //}
 
 
     // マーカーを生成する
