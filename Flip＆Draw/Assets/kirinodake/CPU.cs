@@ -12,7 +12,9 @@ public class CPU : MonoBehaviour
     [SerializeField] private GameDirector gameDirector; // ゲームの進行状況を管理する GameDirector への参照
 
     public static int rand;//ランダム
-    List<Vector2Int> points = new();
+    List<Vector2Int> points = new();////2->3
+
+
 
     // Start is called before the first frame update
     void Start()

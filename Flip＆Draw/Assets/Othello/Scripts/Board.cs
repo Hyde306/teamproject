@@ -120,6 +120,8 @@ public class Board : MonoBehaviour
     }
     // 現在のプレイヤーの有効な配置位置を更新する
 
+
+
     public bool UpdateEligiblePositions(CoinFace face)
     {
         switch (face)
@@ -175,6 +177,7 @@ public class Board : MonoBehaviour
 
                     //CPUなら白コインを配置
                     setCoin(CoinFace.white, _cachedWhitePoints[CPU.rand]);
+
                 }
                 break;
         }
@@ -218,21 +221,26 @@ public class Board : MonoBehaviour
         }
     }
     //コインを自動で設定
-    public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)
+    //public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)
+    public Coin setCoin(CoinFace face, Vector2Int place_pos)
     {
-        ++_coinsPlaced;// 配置されたコイン数を更新
 
-        // コインを生成し、適切な Transform に設定
+        ++_coinsPlaced; // 配置されたコイン数を更新
+
+        Vector3 spawnPos = new Vector3(place_pos.x, place_pos.y, 0);
+
+        //return Instantiate(_blackCoinPrefab, spawn_pos, Quaternion.identity, _t).GetComponent<Coin>();元のコード
 
         switch (face)
         {
             case CoinFace.black:
-                return Instantiate(_blackCoinPrefab, place_pos, Quaternion.identity, _t).GetComponent<Coin>();
+                return Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
             case CoinFace.white:
-                return Instantiate(_whiteCoinPrefab, place_pos, Quaternion.identity, _t).GetComponent<Coin>();
+                return Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
             default:
                 return null;
         }
+
     }
 
 
