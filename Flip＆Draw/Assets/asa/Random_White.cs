@@ -5,79 +5,90 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Coinオブジェクトをクリックしたときに反転処理を行うスクリプト。
-/// また、UIボタンを押すことでランダムなコインまたは横一列のコインを反転させる。
+/// 白プレイヤーが使うランダム反転スクリプト。
+/// ランダムで自分（Whitecoin）と相手（Blackcoin）のコマを3〜5個ずつ反転させる。
 /// </summary>
-
 public class Random_White : MonoBehaviour
 {
-    // このオブジェクトにアタッチされているCoinコンポーネント
+    // アタッチされている Coin スクリプトの参照
     private Coin _coin;
 
-    // ランダムに1列（同じY座標）のコインをすべて反転させるUIボタン
+    // UIのランダム反転ボタン
     [SerializeField] private Button randomFlipButton;
 
+    // 盤面管理用のBoardスクリプト
     [SerializeField] private Board _board;
 
-    public GameDirector gameDirector; // GameDirectorを参照
+    // GameDirectorへの参照（ターン管理など）
+    public GameDirector gameDirector;
 
-    // シーン上のすべてのcoinretuインスタンスを保持する静的リスト
+    // シーン上の全コイン（このスクリプトがアタッチされたもの）を管理するリスト
     private static List<Random_White> allCoins = new List<Random_White>();
 
-    // スクリプトが有効化されたときに呼ばれる初期化処理
+    // 初期化：コイン登録とボタンイベント設定
     private void Awake()
     {
-        // Coinコンポーネントの取得
         _coin = GetComponent<Coin>();
-
-        // このインスタンスを全コインリストに追加
         allCoins.Add(this);
 
-        // ランダム反転ボタンにイベントリスナーを登録
         if (randomFlipButton != null)
         {
+            // ボタンが押されたときに FlipRandom() を呼び出す
             randomFlipButton.onClick.AddListener(FlipRandom);
         }
     }
 
-    // オブジェクトが破棄されたときに、リストから削除
+    // コインが削除されたとき、リストからも除外
     private void OnDestroy()
     {
         allCoins.Remove(this);
     }
 
-    // Y座標が同じコイン（3~4をランダムで選び、すべて反転させる
+    /// <summary>
+    /// 自分と相手のコマをランダムにそれぞれ3〜5個反転させる
+    /// </summary>
     private void FlipRandom()
     {
-        // 相手の駒（Whitecoinタグ）をすべて取得
+        // 自分（Whitecoin）のコマをすべて取得
+        var myCoins = allCoins
+            .Where(c => c.gameObject.CompareTag("Whitecoin"))
+            .ToList();
+
+        // 相手（Blackcoin）のコマをすべて取得
         var opponentCoins = allCoins
-     .Where(c => c.gameObject.CompareTag("Blackcoin"))
-     .ToList();
+            .Where(c => c.gameObject.CompareTag("Blackcoin"))
+            .ToList();
 
-        // 対象がいなければ終了
-        if (opponentCoins.Count == 0) return;
+        // 自分のコマを3〜5個ランダムで選び反転
+        int myFlipCount = Mathf.Min(UnityEngine.Random.Range(3, 6), myCoins.Count);
+        var selectedMyCoins = myCoins
+            .OrderBy(c => UnityEngine.Random.value)
+            .Take(myFlipCount);
 
-        // 反転する数をランダムに決定（3〜5個、ただし最大は相手の駒の数）
-        int flipCount = Mathf.Min(UnityEngine.Random.Range(3, 6), opponentCoins.Count);
-
-        // ランダムに選んで反転
-        var selectedCoins = opponentCoins
-     .OrderBy(c => UnityEngine.Random.value)
-     .Take(flipCount);
-
-        foreach (var coin in selectedCoins)
+        foreach (var coin in selectedMyCoins)
         {
-            coin._coin.FlipFace();
+            coin._coin.FlipFace(); // White → Black に反転
+        }
+
+        // 相手のコマを3〜5個ランダムで選び反転
+        int opponentFlipCount = Mathf.Min(UnityEngine.Random.Range(3, 6), opponentCoins.Count);
+        var selectedOpponentCoins = opponentCoins
+            .OrderBy(c => UnityEngine.Random.value)
+            .Take(opponentFlipCount);
+
+        foreach (var coin in selectedOpponentCoins)
+        {
+            coin._coin.FlipFace(); // Black → White に反転
         }
 
         // マーカー削除と再配置
         GameDirector director = FindObjectOfType<GameDirector>();
         if (director != null)
         {
-            // キャッシュクリア
             _board.ClearCachedPoints();
-            // 配置可能位置の更新
-            _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
+            _board.GetComponent<Board>().UpdateEligiblePositions(
+                director.IsPlayerTurn() ? CoinFace.black : CoinFace.white
+            );
         }
     }
 }

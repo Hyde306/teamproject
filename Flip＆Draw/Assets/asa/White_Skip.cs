@@ -4,6 +4,7 @@ public class White_Skip : MonoBehaviour
 {
     [SerializeField] private GameDirector gameDirector;
     [SerializeField] private Board board;
+    [SerializeField] private SkillButtonController skillButtonController;
 
     private bool pendingOverride = false;
     private bool wasPlayerTurn = false;
@@ -72,5 +73,8 @@ public class White_Skip : MonoBehaviour
             blackPointsField.SetValue(board, null);
         if (whitePointsField != null)
             whitePointsField.SetValue(board, null);
+
+        // ƒ{ƒ^ƒ“–³Œø‰»‚ð’Ê’m
+        skillButtonController.MarkSkillAsUsed();
     }
 }

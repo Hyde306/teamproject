@@ -49,35 +49,48 @@ public class Random_Black : MonoBehaviour
     // Y座標が同じコイン（3~4をランダムで選び、すべて反転させる
     private void FlipRandom()
     {
-        // 相手の駒（Whitecoinタグ）をすべて取得
+        // 自分のコマ（Blackcoinタグ）を取得
+        var myCoins = allCoins
+            .Where(c => c.gameObject.CompareTag("Blackcoin"))
+            .ToList();
+
+        // 相手のコマ（Whitecoinタグ）を取得
         var opponentCoins = allCoins
-     .Where(c => c.gameObject.CompareTag("Whitecoin"))
-     .ToList();
+            .Where(c => c.gameObject.CompareTag("Whitecoin"))
+            .ToList();
 
-        // 対象がいなければ終了
-        if (opponentCoins.Count == 0) return;
+        // ランダムで反転させる数（3〜5個）
+        int myFlipCount = Mathf.Min(UnityEngine.Random.Range(3, 6), myCoins.Count);
+        int opponentFlipCount = Mathf.Min(UnityEngine.Random.Range(3, 6), opponentCoins.Count);
 
-        // 反転する数をランダムに決定（3〜5個、ただし最大は相手の駒の数）
-        int flipCount = Mathf.Min(UnityEngine.Random.Range(3, 6), opponentCoins.Count);
+        // ランダムに選んで反転（Blackcoin → Whitecoin）
+        var selectedMyCoins = myCoins
+            .OrderBy(c => UnityEngine.Random.value)
+            .Take(myFlipCount);
 
-        // ランダムに選んで反転
-        var selectedCoins = opponentCoins
-     .OrderBy(c => UnityEngine.Random.value)
-     .Take(flipCount);
-
-        foreach (var coin in selectedCoins)
+        foreach (var coin in selectedMyCoins)
         {
-            coin._coin.FlipFace();
+            coin._coin.FlipFace(); // 自分の駒を相手の色に
+        }
+
+        // ランダムに選んで反転（Whitecoin → Blackcoin）
+        var selectedOpponentCoins = opponentCoins
+            .OrderBy(c => UnityEngine.Random.value)
+            .Take(opponentFlipCount);
+
+        foreach (var coin in selectedOpponentCoins)
+        {
+            coin._coin.FlipFace(); // 相手の駒を自分の色に
         }
 
         // マーカー削除と再配置
         GameDirector director = FindObjectOfType<GameDirector>();
         if (director != null)
         {
-            // キャッシュクリア
             _board.ClearCachedPoints();
-            // 配置可能位置の更新
-            _board.GetComponent<Board>().UpdateEligiblePositions(director.IsPlayerTurn() ? CoinFace.black : CoinFace.white);
+            _board.GetComponent<Board>().UpdateEligiblePositions(
+                director.IsPlayerTurn() ? CoinFace.black : CoinFace.white
+            );
         }
     }
 }
