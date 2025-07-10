@@ -1824,6 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 1253741131}
+  skillButtonController: {fileID: 0}
 --- !u!4 &468230123
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,6 +2865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1875605096}
+  targetImage2: {fileID: 0}
+  targetImage3: {fileID: 0}
 --- !u!114 &787234615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3641,7 +3644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 853.3, y: -84}
+  m_AnchoredPosition: {x: 861.99, y: -118.5}
   m_SizeDelta: {x: 165.3, y: 237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177269173
@@ -3660,7 +3663,7 @@ MonoBehaviour:
   skillButton: {fileID: 1177269175}
   usableTurn: 10
   maxUses: 2
-  isPlayerCard: 1
+  isPlayerCard: 0
 --- !u!114 &1177269174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4949,6 +4952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1185159285}
+  targetImage2: {fileID: 0}
+  targetImage3: {fileID: 0}
 --- !u!114 &1743199046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5662,6 +5667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 1253741131}
+  skillButtonController: {fileID: 0}
 --- !u!4 &2067508553
 Transform:
   m_ObjectHideFlags: 0
@@ -6002,6 +6008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1038288845}
+  targetImage2: {fileID: 0}
+  targetImage3: {fileID: 0}
 --- !u!114 &2127640720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6280,6 +6288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1463941220}
+  targetImage2: {fileID: 0}
+  targetImage3: {fileID: 0}
 --- !u!114 &2142495312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6309,6 +6319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 0}
+  skillButtonController: {fileID: 0}
 --- !u!114 &2142495314
 MonoBehaviour:
   m_ObjectHideFlags: 0
