@@ -63,8 +63,8 @@ public class coinretu : MonoBehaviour
     {
         // 相手の駒（Whitecoinタグ）をすべて取得
         var opponentCoins = allCoins
-     .Where(c => c.gameObject.CompareTag("Whitecoin"))
-     .ToList();
+         .Where(c => c.gameObject.CompareTag("Whitecoin"))
+         .ToList();
 
         // 対象がいなければ終了
         if (opponentCoins.Count == 0) return;
