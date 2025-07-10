@@ -27,7 +27,8 @@ public class CPU : MonoBehaviour
 
         if (!isPlayerTurn) // 自分のターン＝白ターンかどうか
         {
-            rand = UnityEngine.Random.Range(1,Board.white_count);
+            rand = UnityEngine.Random.Range(1,Board.white_count);//白のマーカーの位置をランダムで設定
+
 
             GameObject[] markers = GameObject.FindGameObjectsWithTag("EligibleMarker");
             foreach (GameObject marker in markers)
@@ -42,4 +43,6 @@ public class CPU : MonoBehaviour
             }
         }
     }
+
+
 }

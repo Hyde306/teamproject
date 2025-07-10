@@ -42,12 +42,12 @@ public class Board : MonoBehaviour
     private bool _canPlay = true; // ゲームのプレイ可否
     private int _coinsPlaced = 0; // 配置済みのコイン数
     public static int white_count;//白のコインの枚数をカウント
+    private int sum_count = 0;//合計のコインの枚数
+
     // Properties
     // グリッドの原点座標（中央揃え）
 
     private Vector3 gridOrigin => _t.position - new Vector3((_gridDimension.x * _cellDimension.x) / 2, (_gridDimension.y * _cellDimension.y) / 2);
-
-
 
     // コインをボード上に配置する
 
@@ -71,7 +71,7 @@ public class Board : MonoBehaviour
             }
 
             // コインを作成し、ボードに配置
-            var coin = makeCoin(face, _grid.GetCellCenter(index));
+            var coin = makeCoin(face, _grid.GetCellCenter(index));////////////////左クリックでコイン生成
 
             _grid.GetCellData(index).isOccupied = true;
             _grid.GetCellData(index).coin = coin;
@@ -93,6 +93,7 @@ public class Board : MonoBehaviour
     }
 
     // ボード上の黒と白のコインの数を取得する
+    //sum_count = black_count + white_count;
 
     public Vector2Int GetCoinCount()
     {
@@ -173,7 +174,7 @@ public class Board : MonoBehaviour
                     drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
 
                     //CPUなら白コインを配置
-
+                    setCoin(CoinFace.white, _cachedWhitePoints[CPU.rand]);
                 }
                 break;
         }
@@ -216,6 +217,25 @@ public class Board : MonoBehaviour
                 return null;
         }
     }
+    //コインを自動で設定
+    public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)
+    {
+        ++_coinsPlaced;// 配置されたコイン数を更新
+
+        // コインを生成し、適切な Transform に設定
+
+        switch (face)
+        {
+            case CoinFace.black:
+                return Instantiate(_blackCoinPrefab, place_pos, Quaternion.identity, _t).GetComponent<Coin>();
+            case CoinFace.white:
+                return Instantiate(_whiteCoinPrefab, place_pos, Quaternion.identity, _t).GetComponent<Coin>();
+            default:
+                return null;
+        }
+    }
+
+
     // マーカーを生成する
 
     private void makeMark(Vector3 worldPosition, CoinFace face)
@@ -230,7 +250,6 @@ public class Board : MonoBehaviour
                 break;
         }
     }
-
 
     // ゲームボードを初期化し、開始時のコイン配置を設定する
 
