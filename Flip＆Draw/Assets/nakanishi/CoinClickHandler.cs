@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CoinClickHandler : MonoBehaviour
 {
     [SerializeField] private Board _board;
-    [SerializeField] private SkillButtonController skillButtonController;
     public GameDirector gameDirector; // GameDirectorを参照
     private Coin _coin;
     public bool can_change;
@@ -48,9 +47,6 @@ public class CoinClickHandler : MonoBehaviour
                 _board.ClearCachedPoints();
             }
         }
-
-        // ボタン無効化を通知
-        skillButtonController.MarkSkillAsUsed();
 
     }
 }
