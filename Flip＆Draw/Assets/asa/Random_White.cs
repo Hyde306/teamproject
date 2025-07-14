@@ -86,8 +86,9 @@ public class Random_White : MonoBehaviour
         if (director != null)
         {
             _board.clearEligibleMarkers(); // これが実際のマーカー削除
-            _board.ClearCachedPoints();
-            _board.GetComponent<Board>().UpdateEligiblePositions(
+            _board.ClearCachedPoints();    // キャッシュもクリア
+
+            _board.UpdateEligiblePositions(
                 director.IsPlayerTurn() ? CoinFace.black : CoinFace.white
             );
         }

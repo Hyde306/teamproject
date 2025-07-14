@@ -10,7 +10,7 @@ public class SkillButtonController : MonoBehaviour
     [SerializeField] private int cooldownTurns = 2;     // スキル使用後のクールタイム（ターン数）
     [SerializeField] private bool isPlayerCard = true;  // このボタンがプレイヤー用かどうか
 
-    private int currentUses = 0;        // 現在の使用回数
+    private int currentUses = 0;        // 現在の使用回数（累積）
     private int cooldownRemaining = 0; // クールタイム残りターン数
     private int lastCheckedTurn = -1;  // 最後にターンをチェックしたターン番号
 
@@ -33,8 +33,6 @@ public class SkillButtonController : MonoBehaviour
 
             if (cooldownRemaining > 0)
                 cooldownRemaining--;
-
-            currentUses = 0; // 毎ターン使用回数をリセット（必要に応じて変更可能）
         }
 
         // スキルが使用可能かどうかを判定
@@ -58,11 +56,18 @@ public class SkillButtonController : MonoBehaviour
             return;
         }
 
+        // 使用回数の上限に達していたら使用不可
+        if (currentUses >= maxUses)
+        {
+            skillButton.interactable = false;
+            return;
+        }
+
         currentUses++;               // 使用回数をカウント
         cooldownRemaining = cooldownTurns; // クールタイムを設定
 
 
-        // 使用回数の上限に達したらボタンを無効化（ただし次のターンで復活）
+        // 使用回数の上限に達したらボタンを無効化
         if (currentUses >= maxUses)
         {
             skillButton.interactable = false;
