@@ -607,6 +607,7 @@ MonoBehaviour:
   skillButton: {fileID: 113883087}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 1
 --- !u!1 &157553100
 GameObject:
@@ -2680,6 +2681,7 @@ MonoBehaviour:
   skillButton: {fileID: 736698376}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 0
 --- !u!1 &776719278
 GameObject:
@@ -2867,6 +2869,7 @@ MonoBehaviour:
   targetImage: {fileID: 1875605096}
   targetImage2: {fileID: 0}
   targetImage3: {fileID: 0}
+  targetImage4: {fileID: 0}
 --- !u!114 &787234615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2992,6 +2995,7 @@ MonoBehaviour:
   skillButton: {fileID: 787234615}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 0
 --- !u!1 &787995421
 GameObject:
@@ -3663,6 +3667,7 @@ MonoBehaviour:
   skillButton: {fileID: 1177269175}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 0
 --- !u!114 &1177269174
 MonoBehaviour:
@@ -4954,6 +4959,7 @@ MonoBehaviour:
   targetImage: {fileID: 1185159285}
   targetImage2: {fileID: 0}
   targetImage3: {fileID: 0}
+  targetImage4: {fileID: 0}
 --- !u!114 &1743199046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4970,6 +4976,7 @@ MonoBehaviour:
   skillButton: {fileID: 1743199038}
   usableTurn: 5
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 1
 --- !u!1 &1759796452
 GameObject:
@@ -5104,8 +5111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 1806639859}
-  usableTurn: 10
+  usableTurn: 1
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 1
 --- !u!114 &1806639858
 MonoBehaviour:
@@ -6010,6 +6018,7 @@ MonoBehaviour:
   targetImage: {fileID: 1038288845}
   targetImage2: {fileID: 0}
   targetImage3: {fileID: 0}
+  targetImage4: {fileID: 0}
 --- !u!114 &2127640720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6135,6 +6144,7 @@ MonoBehaviour:
   skillButton: {fileID: 2127640723}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 1
 --- !u!1 &2142495305
 GameObject:
@@ -6290,6 +6300,7 @@ MonoBehaviour:
   targetImage: {fileID: 1463941220}
   targetImage2: {fileID: 0}
   targetImage3: {fileID: 0}
+  targetImage4: {fileID: 0}
 --- !u!114 &2142495312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6336,4 +6347,5 @@ MonoBehaviour:
   skillButton: {fileID: 2142495307}
   usableTurn: 5
   maxUses: 2
+  cooldownTurns: 2
   isPlayerCard: 0

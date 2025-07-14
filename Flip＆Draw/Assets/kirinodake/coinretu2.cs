@@ -86,6 +86,7 @@ public class coinretu2 : MonoBehaviour
         GameDirector director = FindObjectOfType<GameDirector>();
         if (director != null)
         {
+            _board.clearEligibleMarkers(); // これが実際のマーカー削除
             // キャッシュクリア
             _board.ClearCachedPoints();
             // 配置可能位置の更新

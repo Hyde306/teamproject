@@ -85,6 +85,7 @@ public class Random_White : MonoBehaviour
         GameDirector director = FindObjectOfType<GameDirector>();
         if (director != null)
         {
+            _board.clearEligibleMarkers(); // これが実際のマーカー削除
             _board.ClearCachedPoints();
             _board.GetComponent<Board>().UpdateEligiblePositions(
                 director.IsPlayerTurn() ? CoinFace.black : CoinFace.white
