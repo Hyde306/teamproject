@@ -55,14 +55,12 @@ public class SkillButtonController : MonoBehaviour
         // クールタイム中は使用不可
         if (cooldownRemaining > 0)
         {
-            Debug.Log("スキルはクールタイム中です");
             return;
         }
 
         currentUses++;               // 使用回数をカウント
         cooldownRemaining = cooldownTurns; // クールタイムを設定
 
-        Debug.Log($"スキル使用！残り回数: {maxUses - currentUses} / クールタイム: {cooldownRemaining}ターン");
 
         // 使用回数の上限に達したらボタンを無効化（ただし次のターンで復活）
         if (currentUses >= maxUses)
