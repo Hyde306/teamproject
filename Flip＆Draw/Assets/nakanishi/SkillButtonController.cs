@@ -7,10 +7,12 @@ public class SkillButtonController : MonoBehaviour
     [SerializeField] private Button skillButton;        // スキルボタンの UI 要素
     [SerializeField] private int usableTurn = 3;        // スキルが使用可能になるターン数
     [SerializeField] private int maxUses = 3;           // スキルの最大使用回数
+    [SerializeField] private int cooldownTurns = 2;     // スキル使用後のクールタイム（ターン数）
     [SerializeField] private bool isPlayerCard = true;  // このボタンがプレイヤー用かどうか
 
     private int currentUses = 0;        // 現在の使用回数
-    private int lastUsedTurn = -1;      // 最後にスキルを使用したターン
+    private int cooldownRemaining = 0; // クールタイム残りターン数
+    private int lastCheckedTurn = -1;  // 最後にターンをチェックしたターン番号
 
     void Start()
     {
@@ -24,14 +26,22 @@ public class SkillButtonController : MonoBehaviour
         bool isPlayerTurn = gameDirector.IsPlayerTurn();     // 現在がプレイヤーのターンかどうか
         bool isMyTurn = (isPlayerCard == isPlayerTurn);      // このボタンが自分のターンに対応しているか
 
-        // このターンですでにスキルを使っているかどうか
-        bool alreadyUsedThisTurn = (lastUsedTurn == currentTurn);
+        // ターンが進んだらクールタイムを減らす
+        if (currentTurn != lastCheckedTurn)
+        {
+            lastCheckedTurn = currentTurn;
+
+            if (cooldownRemaining > 0)
+                cooldownRemaining--;
+
+            currentUses = 0; // 毎ターン使用回数をリセット（必要に応じて変更可能）
+        }
 
         // スキルが使用可能かどうかを判定
         bool canUse = currentTurn >= usableTurn &&           // 使用可能ターンに達している
                       currentUses < maxUses &&               // 使用回数の上限に達していない
                       isMyTurn &&                            // 自分のターンである
-                      !alreadyUsedThisTurn;                  // このターンでまだ使っていない
+                      cooldownRemaining == 0;                // クールタイムが終了している
 
         // ボタンの操作可否を設定
         skillButton.interactable = canUse;
@@ -42,13 +52,19 @@ public class SkillButtonController : MonoBehaviour
     {
         int currentTurn = gameDirector.GetCurrentTurn();
 
-        // 同じターンで2回以上使えないようにする
-        if (lastUsedTurn == currentTurn) return;
+        // クールタイム中は使用不可
+        if (cooldownRemaining > 0)
+        {
+            Debug.Log("スキルはクールタイム中です");
+            return;
+        }
 
         currentUses++;               // 使用回数をカウント
-        lastUsedTurn = currentTurn; // 最後に使用したターンを記録
+        cooldownRemaining = cooldownTurns; // クールタイムを設定
 
-        // 使用回数の上限に達したらボタンを無効化
+        Debug.Log($"スキル使用！残り回数: {maxUses - currentUses} / クールタイム: {cooldownRemaining}ターン");
+
+        // 使用回数の上限に達したらボタンを無効化（ただし次のターンで復活）
         if (currentUses >= maxUses)
         {
             skillButton.interactable = false;

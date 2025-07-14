@@ -622,6 +622,7 @@ MonoBehaviour:
   skillButton: {fileID: 113883087}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 10
   isPlayerCard: 1
 --- !u!114 &113883095
 MonoBehaviour:
@@ -2967,6 +2968,7 @@ MonoBehaviour:
   skillButton: {fileID: 736698376}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 10
   isPlayerCard: 0
 --- !u!114 &736698383
 MonoBehaviour:
@@ -3311,6 +3313,7 @@ MonoBehaviour:
   skillButton: {fileID: 787234615}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 10
   isPlayerCard: 0
 --- !u!1 &838949705
 GameObject:
@@ -4130,6 +4133,7 @@ MonoBehaviour:
   skillButton: {fileID: 1345552689}
   usableTurn: 15
   maxUses: 1
+  cooldownTurns: 10
   isPlayerCard: 1
 --- !u!114 &1345552688
 MonoBehaviour:
@@ -4319,6 +4323,7 @@ MonoBehaviour:
   skillButton: {fileID: 1447799624}
   usableTurn: 15
   maxUses: 1
+  cooldownTurns: 10
   isPlayerCard: 0
 --- !u!114 &1447799623
 MonoBehaviour:
@@ -5347,6 +5352,7 @@ MonoBehaviour:
   skillButton: {fileID: 1743199038}
   usableTurn: 15
   maxUses: 2
+  cooldownTurns: 10
   isPlayerCard: 1
 --- !u!1 &1747935310
 GameObject:
@@ -6463,6 +6469,7 @@ MonoBehaviour:
   skillButton: {fileID: 2127640723}
   usableTurn: 10
   maxUses: 2
+  cooldownTurns: 10
   isPlayerCard: 1
 --- !u!1 &2142495305
 GameObject:
@@ -6664,4 +6671,5 @@ MonoBehaviour:
   skillButton: {fileID: 2142495307}
   usableTurn: 15
   maxUses: 2
+  cooldownTurns: 10
   isPlayerCard: 0
