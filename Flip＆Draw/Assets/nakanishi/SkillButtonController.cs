@@ -79,4 +79,22 @@ public class SkillButtonController : MonoBehaviour
     {
         MarkSkillAsUsed(); // スキル使用を記録
     }
+
+
+    public int GetCooldownRemaining()
+    {
+        return cooldownRemaining;
+    }
+
+    public int GetCurrentUses()
+    {
+        return currentUses;
+    }
+
+    public int GetMaxUses()
+    {
+        return maxUses;
+    }
+
+
 }
