@@ -4,7 +4,6 @@ public class Black_Skip : MonoBehaviour
 {
     [SerializeField] private GameDirector gameDirector;
     [SerializeField] private Board board; // Boardの参照を追加
-    [SerializeField] private SkillButtonController skillButtonController;
 
     private bool skillUsed = false;
     private bool pendingOverride = false;
@@ -81,9 +80,6 @@ public class Black_Skip : MonoBehaviour
             blackPointsField.SetValue(board, null);
         if (whitePointsField != null)
             whitePointsField.SetValue(board, null);
-
-        // ボタン無効化を通知
-        skillButtonController.MarkSkillAsUsed();
     }
 
 }

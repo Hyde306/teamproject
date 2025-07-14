@@ -2086,7 +2086,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 1253741131}
-  skillButtonController: {fileID: 0}
 --- !u!4 &468230123
 Transform:
   m_ObjectHideFlags: 0
@@ -4016,7 +4015,6 @@ GameObject:
   - component: {fileID: 1345552691}
   - component: {fileID: 1345552690}
   - component: {fileID: 1345552689}
-  - component: {fileID: 1345552688}
   - component: {fileID: 1345552687}
   - component: {fileID: 1345552692}
   - component: {fileID: 1345552686}
@@ -4081,21 +4079,6 @@ MonoBehaviour:
   maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 1
---- !u!114 &1345552688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345552684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c4e7ee7b368d74b9f082f322568cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 1345552689}
-  buttonImage: {fileID: 1345552690}
-  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1345552689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4206,7 +4189,6 @@ GameObject:
   - component: {fileID: 1447799626}
   - component: {fileID: 1447799625}
   - component: {fileID: 1447799624}
-  - component: {fileID: 1447799623}
   - component: {fileID: 1447799622}
   - component: {fileID: 1447799621}
   - component: {fileID: 1447799627}
@@ -4271,21 +4253,6 @@ MonoBehaviour:
   maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 0
---- !u!114 &1447799623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447799619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c4e7ee7b368d74b9f082f322568cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 1447799624}
-  buttonImage: {fileID: 1447799625}
-  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1447799624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5127,7 +5094,6 @@ GameObject:
   - component: {fileID: 1743199039}
   - component: {fileID: 1743199038}
   - component: {fileID: 1743199044}
-  - component: {fileID: 1743199043}
   - component: {fileID: 1743199046}
   m_Layer: 5
   m_Name: Black_Skip_Button
@@ -5251,21 +5217,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743199036}
   m_CullTransparentMesh: 1
---- !u!114 &1743199043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743199036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c4e7ee7b368d74b9f082f322568cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 1743199038}
-  buttonImage: {fileID: 1743199039}
-  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1743199044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,7 +5248,7 @@ MonoBehaviour:
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 1743199038}
   usableTurn: 15
-  maxUses: 2
+  maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 1
 --- !u!1 &1747935310
@@ -5946,7 +5897,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 1253741131}
-  skillButtonController: {fileID: 0}
 --- !u!4 &2067508553
 Transform:
   m_ObjectHideFlags: 0
@@ -6430,7 +6380,6 @@ GameObject:
   - component: {fileID: 2142495308}
   - component: {fileID: 2142495307}
   - component: {fileID: 2142495311}
-  - component: {fileID: 2142495312}
   - component: {fileID: 2142495313}
   - component: {fileID: 2142495314}
   m_Layer: 5
@@ -6571,21 +6520,6 @@ MonoBehaviour:
   targetImage2: {fileID: 1875605096}
   targetImage3: {fileID: 1747935313}
   targetImage4: {fileID: 1670007030}
---- !u!114 &2142495312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142495305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c4e7ee7b368d74b9f082f322568cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 2142495307}
-  buttonImage: {fileID: 2142495308}
-  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &2142495313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6600,7 +6534,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   board: {fileID: 0}
-  skillButtonController: {fileID: 0}
 --- !u!114 &2142495314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6616,6 +6549,6 @@ MonoBehaviour:
   gameDirector: {fileID: 102874816}
   skillButton: {fileID: 2142495307}
   usableTurn: 15
-  maxUses: 2
+  maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 0
