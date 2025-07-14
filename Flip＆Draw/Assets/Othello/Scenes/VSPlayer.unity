@@ -449,11 +449,9 @@ GameObject:
   - component: {fileID: 113883089}
   - component: {fileID: 113883088}
   - component: {fileID: 113883087}
-  - component: {fileID: 113883090}
   - component: {fileID: 113883095}
   - component: {fileID: 113883093}
   - component: {fileID: 113883094}
-  - component: {fileID: 113883096}
   m_Layer: 5
   m_Name: Black_randomFlip_Button
   m_TagString: Untagged
@@ -526,7 +524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 113883096}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CoinActivator, Assembly-CSharp
         m_MethodName: ActivateCoinHandler
         m_Mode: 1
@@ -576,21 +574,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113883085}
   m_CullTransparentMesh: 1
---- !u!114 &113883090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113883085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c4e7ee7b368d74b9f082f322568cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 113883087}
-  buttonImage: {fileID: 113883088}
-  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &113883093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +588,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomFlipButton: {fileID: 113883087}
   _board: {fileID: 1253741131}
+  skillButton: {fileID: 0}
+  usableTurn: 3
+  maxUses: 3
+  cooldownTurns: 2
+  isPlayerCard: 1
   gameDirector: {fileID: 102874816}
 --- !u!114 &113883094
 MonoBehaviour:
@@ -640,21 +628,6 @@ MonoBehaviour:
   targetImage2: {fileID: 1185159285}
   targetImage3: {fileID: 1038288845}
   targetImage4: {fileID: 225457201}
---- !u!114 &113883096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113883085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b7ee32b99b99b842a607d76af4c7ba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameDirector: {fileID: 102874816}
-  coinTag: Whitecoin
-  board: {fileID: 0}
 --- !u!1 &157553100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,11 +2768,9 @@ GameObject:
   - component: {fileID: 736698378}
   - component: {fileID: 736698377}
   - component: {fileID: 736698376}
-  - component: {fileID: 736698379}
   - component: {fileID: 736698383}
   - component: {fileID: 736698381}
   - component: {fileID: 736698382}
-  - component: {fileID: 736698384}
   m_Layer: 5
   m_Name: White_randomFlip_Button
   m_TagString: Untagged
@@ -2872,7 +2843,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 736698384}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CoinActivator, Assembly-CSharp
         m_MethodName: ActivateCoinHandler
         m_Mode: 1
@@ -2922,21 +2893,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736698374}
   m_CullTransparentMesh: 1
---- !u!114 &736698379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736698374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c4e7ee7b368d74b9f082f322568cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 736698376}
-  buttonImage: {fileID: 736698377}
-  pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &736698381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2951,6 +2907,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomFlipButton2: {fileID: 736698376}
   _board: {fileID: 1253741131}
+  skillButton: {fileID: 0}
+  usableTurn: 3
+  maxUses: 3
+  cooldownTurns: 2
+  isPlayerCard: 1
   gameDirector: {fileID: 102874816}
 --- !u!114 &736698382
 MonoBehaviour:
@@ -2986,21 +2947,6 @@ MonoBehaviour:
   targetImage2: {fileID: 1463941220}
   targetImage3: {fileID: 1875605096}
   targetImage4: {fileID: 1670007030}
---- !u!114 &736698384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736698374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b7ee32b99b99b842a607d76af4c7ba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameDirector: {fileID: 102874816}
-  coinTag: Blackcoin
-  board: {fileID: 0}
 --- !u!1 &776719278
 GameObject:
   m_ObjectHideFlags: 0
