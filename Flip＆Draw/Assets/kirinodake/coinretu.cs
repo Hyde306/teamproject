@@ -17,11 +17,6 @@ public class coinretu : MonoBehaviour
     // ランダムに1列（同じY座標）のコインをすべて反転させるUIボタン
     [SerializeField] private Button randomFlipButton;
     [SerializeField] private Board _board;
-    [SerializeField] private Button skillButton;        // スキルボタンの UI 要素
-    [SerializeField] private int usableTurn = 3;        // スキルが使用可能になるターン数
-    [SerializeField] private int maxUses = 3;           // スキルの最大使用回数
-    [SerializeField] private int cooldownTurns = 2;     // スキル使用後のクールタイム（ターン数）
-    [SerializeField] private bool isPlayerCard = true;  // このボタンがプレイヤー用かどうか
 
     public GameDirector gameDirector; // GameDirectorを参照
     private int currentUses = 0;        // 現在の使用回数
@@ -51,18 +46,6 @@ public class coinretu : MonoBehaviour
     private void OnDestroy()
     {
         allCoins.Remove(this);
-    }
-
-    // シーン上のコインの中からランダムに1つを選んで反転させる
-    private void FlipRandomCoin()
-    {
-        if (allCoins.Count == 0) return;
-
-        // ランダムなインデックスを取得
-        int randomIndex = UnityEngine.Random.Range(0, allCoins.Count);
-
-        // 対象のコインを反転
-        allCoins[randomIndex]._coin.FlipFace();
     }
 
     // Y座標が同じコイン（3~4をランダムで選び、すべて反転させる

@@ -49,18 +49,6 @@ public class coinretu2 : MonoBehaviour
         allCoins.Remove(this);
     }
 
-    // シーン上のコインの中からランダムに1つを選んで反転させる
-    //private void FlipRandomCoin()
-    //{
-    //    if (allCoins.Count == 0) return;
-
-    //    // ランダムなインデックスを取得
-    //    int randomIndex = UnityEngine.Random.Range(0, allCoins.Count);
-
-    //    // 対象のコインを反転
-    //    allCoins[randomIndex]._coin.FlipFace();
-    //}
-
     // Y座標が同じコイン（3~4をランダムで選び、すべて反転させる
     private void FlipRandom()
     {
