@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 113883095}
   - component: {fileID: 113883093}
   - component: {fileID: 113883094}
+  - component: {fileID: 113883096}
   m_Layer: 5
   m_Name: Black_randomFlip_Button
   m_TagString: Untagged
@@ -623,6 +624,19 @@ MonoBehaviour:
   targetImage2: {fileID: 1185159285}
   targetImage3: {fileID: 1038288845}
   targetImage4: {fileID: 225457201}
+--- !u!114 &113883096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113883085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &157553100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2959,6 +2973,7 @@ GameObject:
   - component: {fileID: 736698383}
   - component: {fileID: 736698381}
   - component: {fileID: 736698382}
+  - component: {fileID: 736698384}
   m_Layer: 5
   m_Name: White_randomFlip_Button
   m_TagString: Untagged
@@ -3130,6 +3145,19 @@ MonoBehaviour:
   targetImage2: {fileID: 1463941220}
   targetImage3: {fileID: 1875605096}
   targetImage4: {fileID: 1670007030}
+--- !u!114 &736698384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736698374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &760525610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3368,6 +3396,7 @@ GameObject:
   - component: {fileID: 787234614}
   - component: {fileID: 787234618}
   - component: {fileID: 787234619}
+  - component: {fileID: 787234620}
   m_Layer: 5
   m_Name: White_flip_oneButton
   m_TagString: Untagged
@@ -3539,6 +3568,19 @@ MonoBehaviour:
   maxUses: 2
   cooldownTurns: 10
   isPlayerCard: 0
+--- !u!114 &787234620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787234611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &838949705
 GameObject:
   m_ObjectHideFlags: 0
@@ -4624,6 +4666,7 @@ GameObject:
   - component: {fileID: 1345552687}
   - component: {fileID: 1345552692}
   - component: {fileID: 1345552686}
+  - component: {fileID: 1345552693}
   m_Layer: 5
   m_Name: Black_randommanyFlip_Button
   m_TagString: Untagged
@@ -4783,6 +4826,19 @@ MonoBehaviour:
   targetImage2: {fileID: 1185159285}
   targetImage3: {fileID: 1038288845}
   targetImage4: {fileID: 451360379}
+--- !u!114 &1345552693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345552684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &1447799619
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,6 +4854,7 @@ GameObject:
   - component: {fileID: 1447799622}
   - component: {fileID: 1447799621}
   - component: {fileID: 1447799627}
+  - component: {fileID: 1447799628}
   m_Layer: 5
   m_Name: White_randommanyFlip_Button
   m_TagString: Untagged
@@ -4969,6 +5026,19 @@ MonoBehaviour:
   targetImage2: {fileID: 1463941220}
   targetImage3: {fileID: 1875605096}
   targetImage4: {fileID: 1747935313}
+--- !u!114 &1447799628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447799619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &1463941217
 GameObject:
   m_ObjectHideFlags: 0
@@ -5959,6 +6029,7 @@ GameObject:
   - component: {fileID: 1743199038}
   - component: {fileID: 1743199044}
   - component: {fileID: 1743199046}
+  - component: {fileID: 1743199047}
   m_Layer: 5
   m_Name: Black_Skip_Button
   m_TagString: Untagged
@@ -6115,6 +6186,19 @@ MonoBehaviour:
   maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 1
+--- !u!114 &1743199047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743199036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &1747935310
 GameObject:
   m_ObjectHideFlags: 0
@@ -7347,6 +7431,7 @@ GameObject:
   - component: {fileID: 2127640718}
   - component: {fileID: 2127640724}
   - component: {fileID: 2127640725}
+  - component: {fileID: 2127640726}
   m_Layer: 5
   m_Name: Black_flip_Button
   m_TagString: Untagged
@@ -7518,6 +7603,19 @@ MonoBehaviour:
   maxUses: 2
   cooldownTurns: 10
   isPlayerCard: 1
+--- !u!114 &2127640726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127640715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
 --- !u!1 &2142495305
 GameObject:
   m_ObjectHideFlags: 0
@@ -7533,6 +7631,7 @@ GameObject:
   - component: {fileID: 2142495311}
   - component: {fileID: 2142495313}
   - component: {fileID: 2142495314}
+  - component: {fileID: 2142495315}
   m_Layer: 5
   m_Name: White_Skip_Button
   m_TagString: Untagged
@@ -7703,3 +7802,16 @@ MonoBehaviour:
   maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 0
+--- !u!114 &2142495315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142495305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fd529e2ba6ce468686fb6b60ef11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 20624eb3a1c3254449e5cb541dd9e79b, type: 3}
