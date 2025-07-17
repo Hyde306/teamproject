@@ -178,8 +178,12 @@ public class Board : MonoBehaviour
                     drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
 
                     ////CPUなら白コインを配置///CPUスクリプト
-                    //int index = Mathf.Clamp(CPU.rand, 0, _cachedWhitePoints.Count - 1);
-                    //setCoin(CoinFace.white, _cachedWhitePoints[CPU.rand]);
+
+                    if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
+                    {
+                        int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
+                        setCoin(CoinFace.white, _cachedWhitePoints[index]);
+                    }
 
                 }
                 break;
@@ -225,28 +229,50 @@ public class Board : MonoBehaviour
     }
 
     ////コインを自動で設定///CPUスクリプト
+
     ////public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)リスト削除前スクリプト
-    ////全スクリプトplace_pos=placePosに変えた
-    //public Coin setCoin(CoinFace face, Vector2Int placePos)
-    //{
 
-    //    ++_coinsPlaced; // 配置されたコイン数を更新
+    ////全スクリプトplace_pos=placePosに変えた//CPU
 
-    //    Vector3 spawnPos = new Vector3(placePos.x, placePos.y, 0);//追加
+    public Coin setCoin(CoinFace face, Vector2Int placePos)
 
-    //    //return Instantiate(_blackCoinPrefab, spawn_pos, Quaternion.identity, _t).GetComponent<Coin>();元のコード
+    {
 
-    //    switch (face)
-    //    {
-    //        case CoinFace.black:
-    //            return Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();/////////修正
-    //        case CoinFace.white:
-    //            return Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
-    //        default:
-    //            return null;
-    //    }
+        ++_coinsPlaced;
 
-    //}
+        _latestPoint = placePos; // ← 追加
+
+        _latestFace = face;      // ← 追加
+
+        Vector3 spawnPos = _grid.GetCellCenter(placePos);
+
+        Coin coin = null;
+
+        switch (face)
+        {
+            case CoinFace.black:
+
+                coin = Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
+
+                break;
+
+            case CoinFace.white:
+
+                coin = Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
+
+                break;
+
+        }
+
+        _grid.GetCellData(placePos).isOccupied = true;
+
+        _grid.GetCellData(placePos).coin = coin;
+
+        StartCoroutine(updateCoinCaptures()); // ← 追加済みならOK
+
+        return coin;
+
+    }
 
 
     // マーカーを生成する
