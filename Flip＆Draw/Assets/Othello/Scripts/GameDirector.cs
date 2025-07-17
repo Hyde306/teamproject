@@ -23,31 +23,53 @@ public class GameDirector : MonoBehaviour
     public bool IsPlayerTurn() => !_playerSelector;
     public int GetPieceCount() => FindObjectsOfType<Piece>().Length;
 
+    // スキルなどでターン強制上書き中かどうかのフラグ
+    private bool _forceTurnOverride = false;
+
+    // フラグ設定用のメソッド（Black_Skipから呼ぶ）
+    public void SetForceTurnOverride(bool value)
+    {
+        _forceTurnOverride = value;
+    }
+
     public void Update()
     {
-        // ゲームが終了していなければ処理を続行
-        if (!_isGameOver)
+        if (_isGameOver) return;
+
+        if (!_board.CanPlay()) return;
+
+        // 配置可能なポイントがあるか？
+        if (_board.UpdateEligiblePositions(getFace()))
         {
-            // ボードがプレイ可能状態か確認
-            if (_board.CanPlay())
+            if (getInput() && _board.PlaceCoinOnBoard(getFace()))
             {
-                // 現在のプレイヤーの合法手が更新され、かつボードが満杯でない場合
-                if (_board.UpdateEligiblePositions(getFace()) && !_board.IsFull())
-                {
-                    // マウスの左クリックでコインを置いた場合
-                    if (getInput() && _board.PlaceCoinOnBoard(getFace()))
-                    {
-                        NextTurn(); // ターンを進める
-                    }
-                }
-                else
-                {
-                    // 置ける場所がない、またはボードが満杯なのでゲーム終了
-                    _isGameOver = true;
-                }
+                NextTurn(); // コインを置いたらターンを進める
+                _forceTurnOverride = false; // 通常ターン進行ならスキル状態解除
             }
         }
+        else if (!_forceTurnOverride) // ← スキル発動中はスキップ判定をしない
+        {
+            Debug.Log($"{getFace()}は置けないのでスキップされました");
+
+            _playerSelector = !_playerSelector; // 相手にターン渡す
+            if (!_board.UpdateEligiblePositions(getFace()))
+            {
+                _isGameOver = true;
+                Debug.Log("両プレイヤーとも置けないためゲーム終了！");
+            }
+            else
+            {
+                Debug.Log($"{getFace()} のターンにスキップされました");
+            }
+        }
+
+        if (_board.IsFull())
+        {
+            _isGameOver = true;
+            Debug.Log("ボードが満杯。ゲーム終了！");
+        }
     }
+
 
     // ターンとプレイヤー状態を最初に戻すメソッド
     public void ResetGameState()

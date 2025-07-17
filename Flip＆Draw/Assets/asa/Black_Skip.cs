@@ -7,7 +7,8 @@ public class Black_Skip : MonoBehaviour
 
     private bool skillUsed = false;
     private bool pendingOverride = false;
-
+    // スキルによるターン強奪が現在有効かどうかを示すフラグ
+    private bool skillInEffect = false;
     private bool wasPlayerTurn = false;
 
     void Update()
@@ -48,14 +49,34 @@ public class Black_Skip : MonoBehaviour
         if (selectorField != null)
         {
             bool current = (bool)selectorField.GetValue(gameDirector);
-            selectorField.SetValue(gameDirector, !current);
-            Debug.Log("ターンが強制的に戻されました！");
+            selectorField.SetValue(gameDirector, !current); // ターンを戻す
+
+            Debug.Log($"ターンを強制的に戻しました。現在のプレイヤー: {gameDirector.getFace()}");
+
+            bool hasMoves = board.UpdateEligiblePositions(gameDirector.getFace());
+            Debug.Log($"合法手チェック結果: {hasMoves}");
+
+            if (!hasMoves)
+            {
+                Debug.Log("スキルで戻したが合法手がなかったため相手にスキップ！");
+                selectorField.SetValue(gameDirector, current); // 元に戻す（相手のターンに）
+                gameDirector.SetForceTurnOverride(false);
+            }
+            else
+            {
+                gameDirector.SetForceTurnOverride(true);
+            }
+
+            UpdateMarkers();
         }
         else
         {
             Debug.LogError("GameDirectorの_playerSelectorにアクセスできません");
         }
     }
+
+
+
 
     private void UpdateMarkers()
     {
