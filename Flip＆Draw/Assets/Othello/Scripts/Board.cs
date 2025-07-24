@@ -179,11 +179,11 @@ public class Board : MonoBehaviour
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
-                    if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
-                    {
-                        int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
-                        setCoin(CoinFace.white, _cachedWhitePoints[index]);
-                    }
+                    //if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
+                    //{
+                    //    int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
+                    //    setCoin(CoinFace.white, _cachedWhitePoints[index]);
+                    //}
 
                 }
                 break;
