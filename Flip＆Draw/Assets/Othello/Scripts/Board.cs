@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SceneLoader1;
 
 
 public class Board : MonoBehaviour
@@ -41,14 +42,21 @@ public class Board : MonoBehaviour
 
     private bool _canPlay = true; // ゲームのプレイ可否
     private int _coinsPlaced = 0; // 配置済みのコイン数
+
+    public int CPUcount;
     public static int white_count;//白のコインの枚数をカウント
-   
 
-
+    public class Receiver : MonoBehaviour
+    {
+        void Start()
+        {
+            int receivedValue = GameData.selectedValue;
+            Debug.Log("受け取った値: " + receivedValue);
+        }
+    }
 
     // Properties
     // グリッドの原点座標（中央揃え）
-
     private Vector3 gridOrigin => _t.position - new Vector3((_gridDimension.x * _cellDimension.x) / 2, (_gridDimension.y * _cellDimension.y) / 2);
 
     // コインをボード上に配置する
@@ -179,12 +187,14 @@ public class Board : MonoBehaviour
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
-                    //if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
-                    //{
-                    //    int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
-                    //    setCoin(CoinFace.white, _cachedWhitePoints[index]);
-                    //}
-
+                    if(GameData.selectedValue == 5)
+                    {
+                        if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
+                        {
+                            int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
+                            setCoin(CoinFace.white, _cachedWhitePoints[index]);
+                        }
+                    }
                 }
                 break;
         }
