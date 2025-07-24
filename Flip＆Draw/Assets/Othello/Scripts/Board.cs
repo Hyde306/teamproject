@@ -43,15 +43,16 @@ public class Board : MonoBehaviour
     private bool _canPlay = true; // ゲームのプレイ可否
     private int _coinsPlaced = 0; // 配置済みのコイン数
 
+    private CoinFace _currentTurn = CoinFace.black; // 初期は黒プレイヤー
+
     public int CPUcount;
     public static int white_count;//白のコインの枚数をカウント
 
-    public class Receiver : MonoBehaviour
+    public class Receiver : MonoBehaviour//変数を受け取る
     {
         void Start()
         {
-            int receivedValue = GameData.selectedValue;
-            Debug.Log("受け取った値: " + receivedValue);
+            int receivedValue = GameData.selectedValue;//受け取った変数管理
         }
     }
 
@@ -59,10 +60,18 @@ public class Board : MonoBehaviour
     // グリッドの原点座標（中央揃え）
     private Vector3 gridOrigin => _t.position - new Vector3((_gridDimension.x * _cellDimension.x) / 2, (_gridDimension.y * _cellDimension.y) / 2);
 
+
     // コインをボード上に配置する
 
     public bool PlaceCoinOnBoard(CoinFace face)
     {
+
+
+        // プレイヤーは黒しか操作できないようにする
+        if (_currentTurn != CoinFace.black || face != CoinFace.black)
+            return false;
+
+
         var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
 
         // マウス座標をグリッドのインデックスに変換
@@ -94,6 +103,8 @@ public class Board : MonoBehaviour
 
 
             clearEligibleMarkers(); // 有効なマーカーをクリア
+
+            _currentTurn = CoinFace.white; // プレイヤーが置いたら次はCPUの白ターン
 
 
             return true;
@@ -187,14 +198,17 @@ public class Board : MonoBehaviour
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
-                    if(GameData.selectedValue == 5)
+                    if(GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
                     {
                         if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
                         {
                             int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
-                            setCoin(CoinFace.white, _cachedWhitePoints[index]);
+                            setCoin(CoinFace.white, _cachedWhitePoints[index], true); // CPUが白を置く
+                            _currentTurn = CoinFace.black; // 黒プレイヤーのターンに戻す
                         }
+
                     }
+
                 }
                 break;
         }

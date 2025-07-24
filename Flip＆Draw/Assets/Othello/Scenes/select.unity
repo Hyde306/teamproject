@@ -867,7 +867,7 @@ GameObject:
   - component: {fileID: 629183066}
   - component: {fileID: 629183065}
   - component: {fileID: 629183064}
-  - component: {fileID: 629183063}
+  - component: {fileID: 629183068}
   m_Layer: 5
   m_Name: Start (1)
   m_TagString: Untagged
@@ -896,18 +896,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -99.689}
   m_SizeDelta: {x: 440.9351, y: 199.3774}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &629183063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629183061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a78ea66b906c7d84eb62fea7c613e43c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &629183064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,9 +953,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 629183063}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 629183068}
+        m_TargetAssemblyTypeName: SceneLoader1, Assembly-CSharp
+        m_MethodName: LoadScene1
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1015,6 +1003,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629183061}
   m_CullTransparentMesh: 1
+--- !u!114 &629183068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629183061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e20030a3658a847a59a3cba18c4036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &817499386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,9 +2419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa9c84e85b08654690a039b4dc3a3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blackPlayerName: {fileID: 1258040032}
-  _whitePlayerName: {fileID: 1549873536}
-  _startGame: {fileID: 1900310331}
 --- !u!1 &1900310329
 GameObject:
   m_ObjectHideFlags: 0
