@@ -117,6 +117,8 @@ public class Board : MonoBehaviour
     // ボード上の黒と白のコインの数を取得する
     //sum_count = black_count + white_count;
 
+
+
     public Vector2Int GetCoinCount()
     {
         int blacks = 0, whites = 0;
@@ -141,11 +143,16 @@ public class Board : MonoBehaviour
 
     }
     // 現在のプレイヤーの有効な配置位置を更新する
-
-
+    private bool _isCPUProcessing = false;
 
     public bool UpdateEligiblePositions(CoinFace face)
     {
+        if (!_isCPUProcessing && GameData.selectedValue == 5 && _currentTurn == CoinFace.white)
+        {
+            _isCPUProcessing = true;
+            StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+        }
+
         switch (face)
         {
             case CoinFace.black:
@@ -199,19 +206,34 @@ public class Board : MonoBehaviour
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
-                    if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
-                    {
-                        StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
-                    }
+                    //if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
+                    //{
+                    //    StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+                    //}
 
                 }
                 break;
+
         }
         // 配置可能なポイントがある場合は true を返す
 
         return true;
     }
     // ゲームがまだプレイ可能かどうかを返す
+    void Update()
+    {
+        if (_currentTurn == CoinFace.black && _canPlay && Input.GetMouseButtonDown(0))
+        {
+            PlaceCoinOnBoard(CoinFace.black);
+        }
+
+        // CPU処理（白ターン時のみ、一度だけ）
+        if (_currentTurn == CoinFace.white && GameData.selectedValue == 5 && !_isCPUProcessing)
+        {
+            _isCPUProcessing = true;
+            StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+        }
+    }
 
     private IEnumerator CPUPlaceWhiteAndSwitchTurn()
     {
@@ -223,15 +245,16 @@ public class Board : MonoBehaviour
             yield return StartCoroutine(updateCoinCaptures()); // 捕獲アニメーション完了まで待つ
 
             clearEligibleMarkers(); // 白マーカーを削除
-
             _cachedWhitePoints = null; // キャッシュもクリア
 
             _currentTurn = CoinFace.black; // 黒ターンに戻す
-
             UpdateEligiblePositions(CoinFace.black); // 黒の配置可能位置を更新してマーカーを出す
-        }
-    }
 
+            _canPlay = true; // 黒が操作できるようにする
+        }
+
+        _isCPUProcessing = false; // 終了後に戻す
+    }
 
     public bool CanPlay() => _canPlay;
     // ボードが満杯かどうかを判定する
