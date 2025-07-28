@@ -117,8 +117,6 @@ public class Board : MonoBehaviour
     // ボード上の黒と白のコインの数を取得する
     //sum_count = black_count + white_count;
 
-
-
     public Vector2Int GetCoinCount()
     {
         int blacks = 0, whites = 0;
@@ -220,11 +218,16 @@ public class Board : MonoBehaviour
         return true;
     }
     // ゲームがまだプレイ可能かどうかを返す
+
+
+
     void Update()
     {
         if (_currentTurn == CoinFace.black && _canPlay && Input.GetMouseButtonDown(0))
         {
             PlaceCoinOnBoard(CoinFace.black);
+
+            HandleBlackClick();
         }
 
         // CPU処理（白ターン時のみ、一度だけ）
@@ -232,6 +235,23 @@ public class Board : MonoBehaviour
         {
             _isCPUProcessing = true;
             StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+        }
+    }
+
+    void HandleBlackClick()
+    {
+        // マウス位置をワールド→盤面に変換
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2Int clickedPos = new Vector2Int(Mathf.FloorToInt(mousePos.x), Mathf.FloorToInt(mousePos.y));
+
+        // 黒が置ける場所にクリックしているか確認
+        if (_cachedBlackPoints != null && _cachedBlackPoints.Contains(clickedPos))
+        {
+            _canPlay = false;
+
+            setCoin(CoinFace.black, clickedPos); // 黒石を置く
+
+            StartCoroutine(HandleTurnChange()); // 裏返して白ターンへ
         }
     }
 
@@ -254,6 +274,17 @@ public class Board : MonoBehaviour
         }
 
         _isCPUProcessing = false; // 終了後に戻す
+    }
+
+    private IEnumerator HandleTurnChange()
+    {
+        yield return StartCoroutine(updateCoinCaptures());
+
+        clearEligibleMarkers();           // 前のターンのマーカー削除
+        _cachedBlackPoints = null;        // 黒の候補リセット
+
+        _currentTurn = CoinFace.white;    // ターン変更
+        UpdateEligiblePositions(CoinFace.white); // 白の候補を更新
     }
 
     public bool CanPlay() => _canPlay;
