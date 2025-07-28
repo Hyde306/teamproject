@@ -66,11 +66,12 @@ public class Board : MonoBehaviour
     public bool PlaceCoinOnBoard(CoinFace face)
     {
 
-
-        // プレイヤーは黒しか操作できないようにする
-        if (_currentTurn != CoinFace.black || face != CoinFace.black)
-            return false;
-
+        if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
+        {
+            // プレイヤーは黒しか操作できないようにする
+            if (_currentTurn != CoinFace.black || face != CoinFace.black)
+                return false;
+        }
 
         var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -198,15 +199,9 @@ public class Board : MonoBehaviour
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
-                    if(GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
+                    if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
                     {
-                        if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
-                        {
-                            int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
-                            setCoin(CoinFace.white, _cachedWhitePoints[index], true); // CPUが白を置く
-                            _currentTurn = CoinFace.black; // 黒プレイヤーのターンに戻す
-                        }
-
+                        StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
                     }
 
                 }
@@ -217,7 +212,27 @@ public class Board : MonoBehaviour
         return true;
     }
     // ゲームがまだプレイ可能かどうかを返す
-    
+
+    private IEnumerator CPUPlaceWhiteAndSwitchTurn()
+    {
+        if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
+            setCoin(CoinFace.white, _cachedWhitePoints[index]); // 白コインを配置
+
+            yield return StartCoroutine(updateCoinCaptures()); // 捕獲アニメーション完了まで待つ
+
+            clearEligibleMarkers(); // 白マーカーを削除
+
+            _cachedWhitePoints = null; // キャッシュもクリア
+
+            _currentTurn = CoinFace.black; // 黒ターンに戻す
+
+            UpdateEligiblePositions(CoinFace.black); // 黒の配置可能位置を更新してマーカーを出す
+        }
+    }
+
+
     public bool CanPlay() => _canPlay;
     // ボードが満杯かどうかを判定する
 
