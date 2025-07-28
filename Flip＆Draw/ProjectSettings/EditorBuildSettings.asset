@@ -4,26 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Othello/Scenes/Title.unity
-    guid: 773ac95c21a1bf84aacb00f99f52aa3d
-  - enabled: 1
-    path: Assets/Othello/Scenes/select.unity
-    guid: 02704b7320b971b469cec6696af04554
-  - enabled: 1
-    path: Assets/Othello/Scenes/VSPlayer.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-<<<<<<< HEAD
-  - enabled: 0
-    path: Assets/asa/VSPlayer.unity
-    guid: 0c113ceea192d6540a40e937dc1b3caa
-=======
-  - enabled: 1
-    path: Assets/Othello/Scenes/VSCPU.unity
-    guid: ac2a9eb6bcb066e4687bfa9072cad86c
->>>>>>> a4b4c3627f9b76bf96c56972c409d9792b9921b3
+  m_Scenes: []
   m_configObjects: {}
