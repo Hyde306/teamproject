@@ -66,11 +66,12 @@ public class Board : MonoBehaviour
     public bool PlaceCoinOnBoard(CoinFace face)
     {
 
-
-        // プレイヤーは黒しか操作できないようにする
-        if (_currentTurn != CoinFace.black || face != CoinFace.black)
-            return false;
-
+        if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
+        {
+            // プレイヤーは黒しか操作できないようにする
+            if (_currentTurn != CoinFace.black || face != CoinFace.black)
+                return false;
+        }
 
         var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -140,11 +141,16 @@ public class Board : MonoBehaviour
 
     }
     // 現在のプレイヤーの有効な配置位置を更新する
-
-
+    private bool _isCPUProcessing = false;
 
     public bool UpdateEligiblePositions(CoinFace face)
     {
+        if (!_isCPUProcessing && GameData.selectedValue == 5 && _currentTurn == CoinFace.white)
+        {
+            _isCPUProcessing = true;
+            StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+        }
+
         switch (face)
         {
             case CoinFace.black:
@@ -198,6 +204,7 @@ public class Board : MonoBehaviour
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
+<<<<<<< HEAD
                     if(GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
                     {
                         if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
@@ -208,16 +215,91 @@ public class Board : MonoBehaviour
                         }
 
                     }
+=======
+                    //if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
+                    //{
+                    //    StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+                    //}
+>>>>>>> 5b0f590ae9bbb257c32a7c22331395bced277ac3
 
                 }
                 break;
+
         }
         // 配置可能なポイントがある場合は true を返す
 
         return true;
     }
     // ゲームがまだプレイ可能かどうかを返す
-    
+
+
+
+    void Update()
+    {
+        if (_currentTurn == CoinFace.black && _canPlay && Input.GetMouseButtonDown(0))
+        {
+            PlaceCoinOnBoard(CoinFace.black);
+
+            HandleBlackClick();
+        }
+
+        // CPU処理（白ターン時のみ、一度だけ）
+        if (_currentTurn == CoinFace.white && GameData.selectedValue == 5 && !_isCPUProcessing)
+        {
+            _isCPUProcessing = true;
+            StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
+        }
+    }
+
+    void HandleBlackClick()
+    {
+        // マウス位置をワールド→盤面に変換
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2Int clickedPos = new Vector2Int(Mathf.FloorToInt(mousePos.x), Mathf.FloorToInt(mousePos.y));
+
+        // 黒が置ける場所にクリックしているか確認
+        if (_cachedBlackPoints != null && _cachedBlackPoints.Contains(clickedPos))
+        {
+            _canPlay = false;
+
+            setCoin(CoinFace.black, clickedPos); // 黒石を置く
+
+            StartCoroutine(HandleTurnChange()); // 裏返して白ターンへ
+        }
+    }
+
+    private IEnumerator CPUPlaceWhiteAndSwitchTurn()
+    {
+        if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
+            setCoin(CoinFace.white, _cachedWhitePoints[index]); // 白コインを配置
+
+            yield return StartCoroutine(updateCoinCaptures()); // 捕獲アニメーション完了まで待つ
+
+            clearEligibleMarkers(); // 白マーカーを削除
+            _cachedWhitePoints = null; // キャッシュもクリア
+
+            _currentTurn = CoinFace.black; // 黒ターンに戻す
+            UpdateEligiblePositions(CoinFace.black); // 黒の配置可能位置を更新してマーカーを出す
+
+            _canPlay = true; // 黒が操作できるようにする
+        }
+
+        _isCPUProcessing = false; // 終了後に戻す
+    }
+
+    private IEnumerator HandleTurnChange()
+    {
+        yield return StartCoroutine(updateCoinCaptures());
+
+        clearEligibleMarkers();           // 前のターンのマーカー削除
+        _cachedBlackPoints = null;        // 黒の候補リセット
+
+        _currentTurn = CoinFace.white;    // ターン変更
+        UpdateEligiblePositions(CoinFace.white); // 白の候補を更新
+    }
+
     public bool CanPlay() => _canPlay;
     // ボードが満杯かどうかを判定する
 
