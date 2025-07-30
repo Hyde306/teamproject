@@ -203,7 +203,7 @@ public class Board : MonoBehaviour
                         if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
                         {
                             int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
-                            setCoin(CoinFace.white, _cachedWhitePoints[index], true); // CPUが白を置く
+                            setCoin(CoinFace.white, _cachedWhitePoints[index]); // CPUが白を置く
                             _currentTurn = CoinFace.black; // 黒プレイヤーのターンに戻す
                         }
 
