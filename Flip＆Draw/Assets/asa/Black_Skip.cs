@@ -43,7 +43,7 @@ public class Black_Skip : MonoBehaviour
     }
 
 
-    private void ForceTurnBack()
+    public void ForceTurnBack()
     {
         var selectorField = typeof(GameDirector).GetField("_playerSelector", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         if (selectorField != null)

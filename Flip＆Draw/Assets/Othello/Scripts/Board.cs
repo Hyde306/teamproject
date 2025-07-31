@@ -16,6 +16,8 @@ public class Board : MonoBehaviour
     [SerializeField] private GameObject _blackCoinPrefab;// 黒コインのプレハブ
     [SerializeField] private GameObject _blackMarkerPrefab;// 黒のマーカーのプレハブ
     [SerializeField] private GameObject _whiteMarkerPrefab;// 白のマーカーのプレハブ
+    [SerializeField] private GameDirector gameDirector;
+    [SerializeField] private Black_Skip blackSkip;
 
     [Range(0.001f, 0.2f)]
     [SerializeField] private float _coinRollSpeed;
@@ -197,42 +199,33 @@ public class Board : MonoBehaviour
                         return false;
 
                     // 新しい配置可能マーカーを描画
-
-                    //drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
-
                     drawNewEligibleMarkers(_cachedWhitePoints, CoinFace.white);
 
                     ////CPUなら白コインを配置///CPUスクリプト
 
-<<<<<<< HEAD
                     if(GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
                     {
                         if (_cachedWhitePoints != null && _cachedWhitePoints.Count > 0)
                         {
                             int index = UnityEngine.Random.Range(0, _cachedWhitePoints.Count);
                             setCoin(CoinFace.white, _cachedWhitePoints[index]); // CPUが白を置く
-                            _currentTurn = CoinFace.black; // 黒プレイヤーのターンに戻す
+                            GameObject.Find("Black_Skip").GetComponent<Black_Skip>().ForceTurnBack();
+
+                            ClearCachedPoints();
                         }
-
+                        else
+                        {
+                            GameObject.Find("Black_Skip").GetComponent<Black_Skip>().ForceTurnBack();
+                        }
                     }
-=======
-                    //if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
-                    //{
-                    //    StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
-                    //}
->>>>>>> 5b0f590ae9bbb257c32a7c22331395bced277ac3
-
                 }
                 break;
-
         }
         // 配置可能なポイントがある場合は true を返す
 
         return true;
     }
     // ゲームがまだプレイ可能かどうかを返す
-
-
 
     void Update()
     {
@@ -263,7 +256,6 @@ public class Board : MonoBehaviour
             _canPlay = false;
 
             setCoin(CoinFace.black, clickedPos); // 黒石を置く
-
             StartCoroutine(HandleTurnChange()); // 裏返して白ターンへ
         }
     }
@@ -277,7 +269,7 @@ public class Board : MonoBehaviour
 
             yield return StartCoroutine(updateCoinCaptures()); // 捕獲アニメーション完了まで待つ
 
-            clearEligibleMarkers(); // 白マーカーを削除
+            //clearEligibleMarkers(); // 白マーカーを削除
             _cachedWhitePoints = null; // キャッシュもクリア
 
             _currentTurn = CoinFace.black; // 黒ターンに戻す
@@ -316,7 +308,6 @@ public class Board : MonoBehaviour
 
 
     // コインオブジェクトを生成する
-
     private Coin makeCoin(CoinFace face, Vector3 worldPosition)
     {
         ++_coinsPlaced;// 配置されたコイン数を更新
@@ -335,15 +326,11 @@ public class Board : MonoBehaviour
     }
 
     ////コインを自動で設定///CPUスクリプト
-
     ////public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)リスト削除前スクリプト
-
     ////全スクリプトplace_pos=placePosに変えた//CPU
 
     public Coin setCoin(CoinFace face, Vector2Int placePos)
-
     {
-
         ++_coinsPlaced;
 
         _latestPoint = placePos; // ← 追加
