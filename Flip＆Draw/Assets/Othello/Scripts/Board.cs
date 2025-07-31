@@ -5,11 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static SceneLoader1;
 
-
 public class Board : MonoBehaviour
 {
     // Fields
-
     [SerializeField] private Vector2Int _gridDimension;// グリッドのサイズ（幅×高さ）
     [SerializeField] private Vector2 _cellDimension;// 各セルのサイズ
     [SerializeField] private GameObject _whiteCoinPrefab;// 白コインのプレハブ
@@ -63,15 +61,11 @@ public class Board : MonoBehaviour
     // グリッドの原点座標（中央揃え）
     private Vector3 gridOrigin => _t.position - new Vector3((_gridDimension.x * _cellDimension.x) / 2, (_gridDimension.y * _cellDimension.y) / 2);
 
-
     // コインをボード上に配置する
-
     public bool PlaceCoinOnBoard(CoinFace face)
     {
-
         if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
         {
-
             // プレイヤーは黒しか操作できないようにする
             if (_currentTurn != CoinFace.black || face != CoinFace.black)
 
@@ -186,7 +180,6 @@ public class Board : MonoBehaviour
             // 勝敗判定などへ
         }
 
-
         switch (face)
         {
             case CoinFace.black:
@@ -282,8 +275,6 @@ public class Board : MonoBehaviour
             _isCPUProcessing = true;
             StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
         }
-
-       
     }
 
     void HandleBlackClick()
