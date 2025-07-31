@@ -588,11 +588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomFlipButton: {fileID: 113883087}
   _board: {fileID: 1253741131}
-  skillButton: {fileID: 0}
-  usableTurn: 3
-  maxUses: 3
-  cooldownTurns: 2
-  isPlayerCard: 1
   gameDirector: {fileID: 102874816}
 --- !u!114 &113883094
 MonoBehaviour:
@@ -3099,11 +3094,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomFlipButton2: {fileID: 736698376}
   _board: {fileID: 1253741131}
-  skillButton: {fileID: 0}
-  usableTurn: 3
-  maxUses: 3
-  cooldownTurns: 2
-  isPlayerCard: 1
   gameDirector: {fileID: 102874816}
 --- !u!114 &736698382
 MonoBehaviour:
@@ -3529,7 +3519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   coinTag: Blackcoin
-  board: {fileID: 0}
+  board: {fileID: 1253741131}
 --- !u!114 &787234619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4177,7 +4167,11 @@ MonoBehaviour:
   _blackCoinPrefab: {fileID: 3240249744551156979, guid: 00c2951ffd015ee43a029c82b9972b7e, type: 3}
   _blackMarkerPrefab: {fileID: 7378477989005087957, guid: 5bd00632b0d72334388dccf5b672084c, type: 3}
   _whiteMarkerPrefab: {fileID: 7378477989005087957, guid: 3c450449fe48e574da89aeba2a2a6316, type: 3}
+  gameDirector: {fileID: 0}
+  blackSkip: {fileID: 0}
+  whiteSkip: {fileID: 0}
   _coinRollSpeed: 0.15
+  CPUcount: 0
 --- !u!4 &1253741132
 Transform:
   m_ObjectHideFlags: 0
@@ -5671,6 +5665,7 @@ GameObject:
   - component: {fileID: 1743199039}
   - component: {fileID: 1743199038}
   - component: {fileID: 1743199044}
+  - component: {fileID: 1743199047}
   - component: {fileID: 1743199046}
   m_Layer: 5
   m_Name: Black_Skip_Button
@@ -5828,6 +5823,20 @@ MonoBehaviour:
   maxUses: 1
   cooldownTurns: 10
   isPlayerCard: 1
+--- !u!114 &1743199047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743199036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18569355a99c83b43ab1893104358bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDirector: {fileID: 102874816}
+  board: {fileID: 1253741131}
 --- !u!1 &1747935310
 GameObject:
   m_ObjectHideFlags: 0
@@ -7212,7 +7221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
   coinTag: Whitecoin
-  board: {fileID: 0}
+  board: {fileID: 1253741131}
 --- !u!114 &2127640725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7397,7 +7406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDirector: {fileID: 102874816}
-  board: {fileID: 0}
+  board: {fileID: 1253741131}
 --- !u!114 &2142495314
 MonoBehaviour:
   m_ObjectHideFlags: 0

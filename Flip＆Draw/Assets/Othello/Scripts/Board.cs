@@ -18,6 +18,7 @@ public class Board : MonoBehaviour
     [SerializeField] private GameObject _whiteMarkerPrefab;// 白のマーカーのプレハブ
     [SerializeField] private GameDirector gameDirector;
     [SerializeField] private Black_Skip blackSkip;
+    [SerializeField] private White_Skip whiteSkip;
 
     [Range(0.001f, 0.2f)]
     [SerializeField] private float _coinRollSpeed;
@@ -70,9 +71,11 @@ public class Board : MonoBehaviour
 
         if (GameData.selectedValue == 5)//受け取った変数が５ならば処理を実行
         {
+
             // プレイヤーは黒しか操作できないようにする
             if (_currentTurn != CoinFace.black || face != CoinFace.black)
-                return false;
+
+            return false;
         }
 
         var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -147,11 +150,42 @@ public class Board : MonoBehaviour
 
     public bool UpdateEligiblePositions(CoinFace face)
     {
+        List<Vector2Int> eligiblePoints = getAllEligiblePosition(face);
+
+        //cpの追加
+        if (eligiblePoints.Count == 0)
+        {
+            Debug.Log($"{face} のターンをスキップします");
+
+            // ターンを相手に渡す
+            _currentTurn = (face == CoinFace.black) ? CoinFace.white : CoinFace.black;
+
+            // 相手の配置可能位置を更新
+            UpdateEligiblePositions(_currentTurn);
+
+            return false;
+        }
+
+        // マーカー描画など通常処理
+        clearEligibleMarkers();
+        drawNewEligibleMarkers(eligiblePoints, face);
+
+
         if (!_isCPUProcessing && GameData.selectedValue == 5 && _currentTurn == CoinFace.white)
         {
             _isCPUProcessing = true;
             StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
         }
+
+        //勝利判定
+        if (getAllEligiblePosition(CoinFace.black).Count == 0 &&
+            getAllEligiblePosition(CoinFace.white).Count == 0)
+        {
+            Debug.Log("両プレイヤーとも置けないため、ゲーム終了");
+            _canPlay = false;
+            // 勝敗判定などへ
+        }
+
 
         switch (face)
         {
@@ -211,11 +245,17 @@ public class Board : MonoBehaviour
                             setCoin(CoinFace.white, _cachedWhitePoints[index]); // CPUが白を置く
                             GameObject.Find("Black_Skip").GetComponent<Black_Skip>().ForceTurnBack();
 
-                            ClearCachedPoints();
+                            GameDirector director = FindObjectOfType<GameDirector>();
+                            if (director != null)
+                            {
+                                // キャッシュクリア
+                                ClearCachedPoints();
+                            }
                         }
                         else
                         {
                             GameObject.Find("Black_Skip").GetComponent<Black_Skip>().ForceTurnBack();
+                            IsFull();
                         }
                     }
                 }
@@ -242,6 +282,8 @@ public class Board : MonoBehaviour
             _isCPUProcessing = true;
             StartCoroutine(CPUPlaceWhiteAndSwitchTurn());
         }
+
+       
     }
 
     void HandleBlackClick()
@@ -269,7 +311,6 @@ public class Board : MonoBehaviour
 
             yield return StartCoroutine(updateCoinCaptures()); // 捕獲アニメーション完了まで待つ
 
-            //clearEligibleMarkers(); // 白マーカーを削除
             _cachedWhitePoints = null; // キャッシュもクリア
 
             _currentTurn = CoinFace.black; // 黒ターンに戻す
@@ -279,6 +320,15 @@ public class Board : MonoBehaviour
         }
 
         _isCPUProcessing = false; // 終了後に戻す
+
+        if (IsFull())
+        {
+            _currentTurn = CoinFace.black;
+            _isCPUProcessing = false;
+            _canPlay = true;
+            UpdateEligiblePositions(CoinFace.black);
+        }
+        yield break;
     }
 
     private IEnumerator HandleTurnChange()
@@ -306,14 +356,12 @@ public class Board : MonoBehaviour
         else return false;
     }
 
-
     // コインオブジェクトを生成する
     private Coin makeCoin(CoinFace face, Vector3 worldPosition)
     {
         ++_coinsPlaced;// 配置されたコイン数を更新
 
         // コインを生成し、適切な Transform に設定
-
         switch (face)
         {
             case CoinFace.black:
@@ -328,13 +376,11 @@ public class Board : MonoBehaviour
     ////コインを自動で設定///CPUスクリプト
     ////public Coin setCoin(CoinFace face, List<Vector2Int> place_pos)リスト削除前スクリプト
     ////全スクリプトplace_pos=placePosに変えた//CPU
-
     public Coin setCoin(CoinFace face, Vector2Int placePos)
     {
         ++_coinsPlaced;
 
         _latestPoint = placePos; // ← 追加
-
         _latestFace = face;      // ← 追加
 
         Vector3 spawnPos = _grid.GetCellCenter(placePos);
@@ -348,28 +394,22 @@ public class Board : MonoBehaviour
                 coin = Instantiate(_blackCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
 
                 break;
-
             case CoinFace.white:
 
                 coin = Instantiate(_whiteCoinPrefab, spawnPos, Quaternion.identity, _t).GetComponent<Coin>();
 
                 break;
-
         }
 
         _grid.GetCellData(placePos).isOccupied = true;
-
         _grid.GetCellData(placePos).coin = coin;
 
         StartCoroutine(updateCoinCaptures()); // ← 追加済みならOK
 
         return coin;
-
     }
 
-
     // マーカーを生成する
-
     private void makeMark(Vector3 worldPosition, CoinFace face)
     {
         switch (face)
@@ -384,7 +424,6 @@ public class Board : MonoBehaviour
     }
 
     // ゲームボードを初期化し、開始時のコイン配置を設定する
-
     private void initBoard()
     {
         // グリッドの中央座標を計算
@@ -412,12 +451,11 @@ public class Board : MonoBehaviour
 
         // ゲームのプレイ可能状態を true にする
         _canPlay = true;
-
     }
+
     // 横方向（左右）のコインの捕獲対象を判定し、リストとして返す
     // 捕獲可能なコインの座標リストを格納した Dictionary
     // キー `0` は右方向、キー `1` は左方向のコインを示す
-     
     private Dictionary<int, List<Vector2Int>> getHorizontalCoinsToBeCaptured() 
     { 
         bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ 
@@ -454,7 +492,6 @@ public class Board : MonoBehaviour
                 break;
             }
         }
-         
         coinsToBeFlipped.Add(0, coinsArray); // 右方向の捕獲対象を追加
 
         // **左方向の探索**
@@ -492,10 +529,10 @@ public class Board : MonoBehaviour
 
         return coinsToBeFlipped; // 捕獲対象のリストを返す
     }
+
     // 縦方向（上下）のコインの捕獲対象を判定し、リストとして返す
     // 捕獲可能なコインの座標リストを格納した Dictionary
     // キー `0` は上方向、キー `1` は下方向のコインを示す
-
     private Dictionary<int, List<Vector2Int>> getVerticalCoinsToBeCaptured()
     {
         bool shouldFlipCoin; // 挟み込めるコインがあるかのフラグ
@@ -773,7 +810,6 @@ public class Board : MonoBehaviour
                 {
                     Vector2Int targetPoint = new Vector2Int(x, y);
 
-
                     // 水平方向
                     // 右
                     shouldFlip = false;
@@ -867,7 +903,6 @@ public class Board : MonoBehaviour
                                 break;
                         }
                     }
-
 
                     // 斜め方向
                     // 右上
@@ -966,7 +1001,6 @@ public class Board : MonoBehaviour
         }
 
         return points;// 配置可能な座標のリストを返す
-
     }
 
     // 現在の配置可能なマーカーをすべて削除する
@@ -974,7 +1008,6 @@ public class Board : MonoBehaviour
     {
         destroyPlaceholderChildren(); // マーカーのプレースホルダーの子オブジェクトを削除
     }
-
 
     // 新しい配置可能なマーカーを描画する
     // <param name="eligiblePoints">配置可能な座標リスト</param>
@@ -984,7 +1017,6 @@ public class Board : MonoBehaviour
         foreach (var p in eligiblePoints)
             makeMark(_grid.GetCellCenter(p), face); // 指定座標にマーカーを生成
     }
-
  
     // マーカーのプレースホルダーの子オブジェクトをすべて削除する
     public void destroyPlaceholderChildren()
@@ -996,9 +1028,7 @@ public class Board : MonoBehaviour
             DestroyImmediate(t.GetChild(0).gameObject);
     }
 
-
     // 初期化処理
-
     public void Awake()
     {
         _canPlay = false; // ゲーム開始時はプレイ不可
@@ -1013,7 +1043,6 @@ public class Board : MonoBehaviour
         _grid.PrepareGrid();
 
         initBoard(); // 盤面を初期化
-
     }
 }
 // **ボードのデータクラス**
@@ -1022,5 +1051,4 @@ public class BoardData
 {
     public bool isOccupied = false; // セルが占有されているかどうか
     public Coin coin; // 配置されたコイン情報
-
 }

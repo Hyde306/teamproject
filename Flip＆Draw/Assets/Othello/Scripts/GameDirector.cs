@@ -68,6 +68,16 @@ public class GameDirector : MonoBehaviour
             _isGameOver = true;
             Debug.Log("ボードが満杯。ゲーム終了！");
         }
+
+
+        if (_board.IsFull() ||
+            (_board.getAllEligiblePosition(CoinFace.black).Count == 0 &&
+             _board.getAllEligiblePosition(CoinFace.white).Count == 0))
+        {
+            _isGameOver = true;
+            Debug.Log("CPU戦でもゲーム終了！");
+        }
+
     }
 
 
